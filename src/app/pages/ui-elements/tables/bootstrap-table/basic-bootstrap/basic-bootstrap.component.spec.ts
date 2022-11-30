@@ -1,0 +1,25 @@
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
+import { BasicBootstrapComponent } from './basic-bootstrap.component';
+
+describe('BasicBootstrapComponent', () => {
+  let component: BasicBootstrapComponent;
+  let fixture: ComponentFixture<BasicBootstrapComponent>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [ BasicBootstrapComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BasicBootstrapComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
