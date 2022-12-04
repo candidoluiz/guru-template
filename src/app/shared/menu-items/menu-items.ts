@@ -68,18 +68,6 @@ const MENUITEMS = [
     ],
   },
   {
-    label: 'Tables',
-    main: [
-      {
-        state: 'bootstrap-table',
-        short_label: 'B',
-        name: 'Bootstrap Table',
-        type: 'link',
-        icon: 'ti-receipt'
-      }
-    ]
-  },
-  {
     label: 'Map And Extra Pages ',
     main: [
       {

@@ -22,9 +22,6 @@ const routes: Routes = [
         path: 'notifications',
         loadChildren: () => import('./pages/ui-elements/advance/notifications/notifications.module').then(m => m.NotificationsModule)
       }, {
-        path: 'bootstrap-table',
-        loadChildren: () => import('./pages/ui-elements/tables/bootstrap-table/basic-bootstrap/basic-bootstrap.module').then(m => m.BasicBootstrapModule),
-      }, {
         path: 'map',
         loadChildren: () => import('./pages/map/google-map/google-map.module').then(m => m.GoogleMapModule),
       }, {
