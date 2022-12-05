@@ -18,10 +18,7 @@ const routes: Routes = [
       }, {
         path: 'basic',
         loadChildren: () => import('./pages/ui-elements/basic/basic.module').then(m => m.BasicModule)
-      }, {
-        path: 'notifications',
-        loadChildren: () => import('./pages/ui-elements/advance/notifications/notifications.module').then(m => m.NotificationsModule)
-      }, {
+      },{
         path: 'map',
         loadChildren: () => import('./pages/map/google-map/google-map.module').then(m => m.GoogleMapModule),
       }, {

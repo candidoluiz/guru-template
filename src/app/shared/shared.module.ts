@@ -2,7 +2,6 @@ import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AccordionAnchorDirective, AccordionDirective, AccordionLinkDirective} from './accordion';
-import {ToggleFullScreenDirective} from './fullscreen/toggle-fullscreen.directive';
 import {CardRefreshDirective} from './card/card-refresh.directive';
 import {CardToggleDirective} from './card/card-toggle.directive';
 import {SpinnerComponent} from './spinner/spinner.component';
@@ -30,7 +29,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccordionAnchorDirective,
     AccordionLinkDirective,
     AccordionDirective,
-    ToggleFullScreenDirective,
     CardRefreshDirective,
     CardToggleDirective,
     SpinnerComponent,
@@ -44,7 +42,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccordionAnchorDirective,
     AccordionLinkDirective,
     AccordionDirective,
-    ToggleFullScreenDirective,
     CardRefreshDirective,
     CardToggleDirective,
     SpinnerComponent,

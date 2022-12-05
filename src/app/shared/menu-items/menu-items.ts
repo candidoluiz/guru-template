@@ -57,14 +57,7 @@ const MENUITEMS = [
             name: 'Typography'
           }
         ]
-      },
-      {
-        state: 'notifications',
-        short_label: 'n',
-        name: 'Notifications',
-        type: 'link',
-        icon: 'ti-crown'
-      },
+      },    
     ],
   },
   {
