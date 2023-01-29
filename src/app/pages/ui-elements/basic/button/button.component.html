@@ -1,8 +1,11 @@
-<div class="button-page">
+<div class="button-page">    
   <div class="row">
     <div class="col-sm-12">
       <app-card [title]="'Color States'">
         <p>Checkout color states of all buttons on popover to buttons</p>
+        <label>teste</label>
+        <ng-select></ng-select>
+        <button type="button" class="btn btn-primary" (click)="teste(modalGrade)">Teste</button>
         <ng-template #popContent>
           <div class='color-code'>
             <div class='row'>
@@ -16,8 +19,7 @@
                 <div class='display-color' style='background-color:#BDC3C7;'></div>
               </div>
             </div>
-          </div>
-
+          </div>          
           <div class='color-code'>
             <div class='row'>
               <div class='col-sm-6 col-xs-12'>
@@ -856,3 +858,13 @@
     </div>
   </div>
 </div>
+
+<ng-template #modalGrade let-modal>
+teste
+</ng-template>
+
+<mat-tab-group>
+    <mat-tab label="First"> Content 1 </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>

@@ -246,24 +246,25 @@
               </div>
             </perfect-scrollbar>
           </div>
-        </nav>
+        </nav>       
         <div class="pcoded-content">
-          <div class="pcoded-inner-content">
-            <div class="main-body">
-              <div class="page-wrapper">
-                <app-title></app-title>
-                <app-breadcrumbs></app-breadcrumbs>
-                <div class="page-body">
-                  <router-outlet>
-                    <app-spinner></app-spinner>
-                  </router-outlet>
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <!-- <perfect-scrollbar [style.max-width]="'100%'" [style.max-height]="'calc(100vh - 230px)'" [config]="config"> -->
+                        <div class="page-wrapper">
+                            <app-title></app-title>
+                            <app-breadcrumbs></app-breadcrumbs>
+                            <div class="page-body">
+                                <router-outlet>
+                                    <app-spinner></app-spinner>
+                                </router-outlet>
+                            </div>
+                        </div>
+                    <!-- </perfect-scrollbar> -->
                 </div>
-              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-

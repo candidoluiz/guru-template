@@ -12,7 +12,11 @@ import {DataFilterPipe} from './element/data-filter.pipe';
 import {MenuItems} from './menu-items/menu-items';
 import {ParentRemoveDirective} from './element/parent-remove.directive';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 // import {ClickOutsideModule} from 'ng-click-outside';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -23,7 +27,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CommonModule,
     PerfectScrollbarModule,
     // ClickOutsideModule,
-    NgbModule
+    NgbModule,
+    NgSelectModule,
+    FormsModule,
+    SweetAlert2Module,
+    MatTabsModule
   ],
   declarations: [
     AccordionAnchorDirective,
@@ -52,6 +60,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ParentRemoveDirective,
     NgbModule,
     PerfectScrollbarModule,
+    NgSelectModule,
+    SweetAlert2Module,
+    MatTabsModule
+
     // ClickOutsideModule
   ],
   providers: [
