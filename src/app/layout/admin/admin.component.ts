@@ -53,16 +53,16 @@ import { MenuItems } from '../../shared/menu-items/menu-items';
                 animate('400ms ease-in-out', style({ opacity: 0 }))
             ])
         ]),
-        trigger('estado', [
-            state('inactive', style({
-                transform: 'translate3d(-100%, 0, 0)'                
-            })),
-            state('active', style({               
-                transform: 'translate3d(0, 0, 0)'
-            })),
-            transition('inactive => active', animate('200ms ease-in-out')),
-            transition('active => inactive', animate('100ms ease-in-out'))
-        ])
+        // trigger('estado', [
+        //     state('inactive', style({
+        //         transform: 'translate3d(-100%, 0, 0)'                
+        //     })),
+        //     state('active', style({               
+        //         transform: 'translate3d(0, 0, 0)'
+        //     })),
+        //     transition('inactive => active', animate('200ms ease-in-out')),
+        //     transition('active => inactive', animate('100ms ease-in-out'))
+        // ])
     ]
 })
 export class AdminComponent implements OnInit {
