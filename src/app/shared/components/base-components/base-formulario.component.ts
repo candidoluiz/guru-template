@@ -1,147 +1,179 @@
-import { OnInit, AfterContentChecked, Injector, Directive } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Directive, OnInit, AfterContentChecked, Injector } from "@angular/core";
+import { FormGroup, FormBuilder } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-
-import { EntidadeBase } from "../../models/base-resource.model"
-
+import { NgxSpinnerService } from "ngx-spinner";
 import { switchMap } from "rxjs/operators";
+import { MensagemService } from "../../mensagem/mensagem.service";
+import { EntidadeBase } from "../../models/base-resource.model";
+import { BaseResourceService } from "../../service/base-resource.service";
 
-
-import { BaseResourceService } from '../../service/base-resource.service';
 
 
 @Directive()
-export abstract class BaseResourceFormComponent<T extends EntidadeBase> implements OnInit, AfterContentChecked{
+export abstract class BaseFormularioComponent<T extends EntidadeBase> implements OnInit, AfterContentChecked{
   
-  currentAction: string;
-  resourceForm: FormGroup;
-  pageTitle: string;
-  serverErrorMessages: string[] = null;
-  submittingForm: boolean = false;
+    currentAction: string;
+    formulario: FormGroup;
+    pageTitle: string;
+    serverErrorMessages: string[] = null;
+    submittingForm: boolean = false;
+    voltar = false;
 
-  protected route: ActivatedRoute;
-  protected router: Router;
-  protected formBuilder: FormBuilder;
+    protected route: ActivatedRoute;
+    protected router: Router;
+    protected formBuilder: FormBuilder;    
 
-  constructor(
-    protected injector: Injector,
-    public resource: T,
-    protected resourceService: BaseResourceService<T>,
-    protected jsonDataToResourceFn: (jsonData) => T
-  ) { 
-    this.route = this.injector.get(ActivatedRoute);
-    this.router = this.injector.get(Router);
-    this.formBuilder = this.injector.get(FormBuilder);
-  }
-
-  ngOnInit() {
-    this.setCurrentAction();
-    this.buildResourceForm();
-    this.loadResource();
-  }
-
-  ngAfterContentChecked(){
-    this.setPageTitle();
-  }
-
-  submitForm(){
-    this.submittingForm = true;
-
-    if(this.currentAction == "new")
-      this.createResource();
-    else // currentAction == "edit"
-      this.updateResource();
-  }
-
-
-  // PRIVATE METHODS
-
-  protected setCurrentAction() {
-    if(this.route.snapshot.url[0].path == "new")
-      this.currentAction = "new"
-    else
-      this.currentAction = "edit"
-  }
-
-  protected loadResource() {
-    if (this.currentAction == "edit") {
-      
-      this.route.paramMap.pipe(
-        switchMap(params => this.resourceService.getById(+params.get("id")))
-      )
-      .subscribe(
-        (resource) => {
-          this.resource = resource;
-          this.resourceForm.patchValue(resource) // binds loaded resource data to resourceForm
-        },
-        (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
-      )
+    constructor(
+        protected injector: Injector,
+        public resource: T,
+        protected resourceService: BaseResourceService<T>,
+        protected jsonDataToResourceFn: (jsonData) => T,
+        protected msgService: MensagemService,
+        protected spinnerService: NgxSpinnerService
+    ) {
+        this.route = this.injector.get(ActivatedRoute);
+        this.router = this.injector.get(Router);
+        this.formBuilder = this.injector.get(FormBuilder);
     }
-  }
 
-
-  protected setPageTitle() {
-    if (this.currentAction == 'new')
-      this.pageTitle = this.creationPageTitle();
-    else{
-      this.pageTitle = this.editionPageTitle();
+    ngOnInit() {
+        this.setCurrentAction();
+        this.buildResourceForm();
+        this.loadResource();
     }
-  }
 
-  protected creationPageTitle(): string{
-    return "Novo"
-  }
+    ngAfterContentChecked() {
+        this.setPageTitle();
+    }
 
-  protected editionPageTitle(): string{
-    return "Edição"
-  }
+    submitForm(voltar) {
+        this.voltar = voltar
+        this.submittingForm = true;
+        this.spinnerService.show();
+
+        if (this.currentAction == "new")
+            this.createResource();
+        else // currentAction == "edit"
+            this.updateResource();
+    }
+
+    onExcluir() {
+        this.spinnerService.show();
+        this.resourceService.delete(this.resource.id).subscribe(ret => {
+            this.spinnerService.hide();
+            this.msgService.showMensagemSucessoTempoRetorno('', 'Excluído com sucesso.').then((res) => {                
+                const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
+                this.router.navigate([baseComponentPath]);                  
+            });
+        }, erro => {
+            this.spinnerService.hide()
+            this.msgService.showMensagemErro('', erro)
+        });
+    }
 
 
-  protected createResource(){
-    const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
+    // PRIVATE METHODS
 
-    this.resourceService.create(resource)
-      .subscribe(
-        resource => this.actionsForSuccess(resource),
-        error => this.actionsForError(error)
-      )
-  }
+    protected setCurrentAction() {
+        if (this.route.snapshot.url[0].path == "new")
+            this.currentAction = "new"
+        else
+            this.currentAction = "edit"
+    }
+
+    protected loadResource() {
+        if (this.currentAction == "edit") {
+            this.spinnerService.show();
+            this.route.paramMap.pipe(
+                switchMap(params => this.resourceService.getById(+params.get("id")))
+            )
+                .subscribe(
+                    (resource) => {
+                        this.spinnerService.hide();
+                        this.resource = resource;
+                        this.formulario.patchValue(resource) // binds loaded resource data to formulario
+                    },
+                    (error) => {
+                        this.spinnerService.hide();
+                        this.msgService.showMensagemErro('Ocorreu um erro no servidor, tente mais tarde.');
+                    }
+                )
+        }
+    }
 
 
-  protected updateResource(){
-    const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
+    protected setPageTitle() {
+        if (this.currentAction == 'new')
+            this.pageTitle = this.creationPageTitle();
+        else {
+            this.pageTitle = this.editionPageTitle();
+        }
+    }
 
-    this.resourceService.update(resource)
-      .subscribe(
-        resource => this.actionsForSuccess(resource),
-        error => this.actionsForError(error)
-      )
-  }
+    protected creationPageTitle(): string {
+        return "Novo"
+    }
+
+    protected editionPageTitle(): string {
+        return "Edição"
+    }
+
+
+    protected createResource() {
+        const resource: T = this.jsonDataToResourceFn(this.formulario.getRawValue());
+        this.resourceService.create(resource)
+            .subscribe(
+                (resource) => this.actionsForSuccess(resource),
+                error => this.actionsForError(error)
+            )
+    }
+
+
+    protected updateResource() {
+        const resource: T = this.jsonDataToResourceFn(this.formulario.getRawValue());
+
+        this.resourceService.update(resource)
+            .subscribe(
+                resource => this.actionsForSuccess(resource),
+                error => this.actionsForError(error)
+            )
+    }
 
   
-  protected actionsForSuccess(resource: T){
-    //toastr.success("Solicitação processada com sucesso!");
+    protected actionsForSuccess(resource: T) {
+        this.spinnerService.hide();
+        //setTimeout(() => {
+            this.msgService.showMensagemSucessoTempo('', 'REGISTRO SALVO COM SUCESSO!');
 
-    const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
-
-    // redirect/reload component page
-    this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true}).then(
-      () => this.router.navigate([baseComponentPath, resource.id, "edit"])
-    )
-  }
+        //}, 1000);
 
 
-  protected actionsForError(error){
-    //toastr.error("Ocorreu um erro ao processar a sua solicitação!");
+        const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
 
-    this.submittingForm = false;
+        // redirect/reload component page
+        if(this.voltar){
+            setTimeout(() => {
+                this.router.navigate([baseComponentPath])                
+            },1200);
+            return
+        }
+        this.router.navigateByUrl(baseComponentPath, { skipLocationChange: true }).then(
+            () => this.router.navigate([baseComponentPath, resource.id, "edit"])
+        )
+    }
 
-    if(error.status === 422)
-      this.serverErrorMessages = JSON.parse(error._body).errors;
-    else
-      this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."]
-  }
+
+    protected actionsForError(error) {
+        this.spinnerService.hide();
+
+        this.submittingForm = false;
+
+        if (error.status === 422)
+            this.serverErrorMessages = JSON.parse(error._body).errors;
+        else
+            this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."]
+    }
 
 
-  protected abstract buildResourceForm(): void;
+    protected abstract buildResourceForm(): void;
 }

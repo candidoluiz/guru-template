@@ -4,10 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    data: {
-      breadcrumb: 'Basic Components',
-      status: false
-    },
+    data: {breadcrumb: 'Basic Components'},
     children: [
       {
         path: 'button',

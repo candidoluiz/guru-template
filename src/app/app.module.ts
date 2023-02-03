@@ -10,6 +10,10 @@ import { TitleComponent } from './layout/admin/title/title.component';
 import { AuthComponent } from './layout/auth/auth.component';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { InMemoryDatabase } from './in-memory-database';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -17,13 +21,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AdminComponent,
     BreadcrumbsComponent,
     TitleComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
+    NgxSpinnerModule
+
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],

@@ -33,3 +33,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 rxjs                            7.4.0
 typescript                      4.4.4
 node_version                    16.13.0
+
+## Banco em memoria
+npm i angular-in-memory-web-api@0.13.0 --save-dev

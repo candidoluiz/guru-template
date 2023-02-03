@@ -1,4 +1,4 @@
-<div class="main-content" >
+<!-- <div class="main-content" >
     <div class="container-fluid card" style="padding-bottom: 15px;">
         <div class="row">
             <div class="col-md-12">
@@ -27,5 +27,24 @@
             <br>
             <ng-content select="[datatable]"></ng-content>
         </div>
+    </div>
+</div> -->
+
+<div class="row" autocomplete="off">
+    <div class="col-sm-12">
+        <app-card [title]="titulo" [semRodape]="true">
+            <div class="content" style="margin-right: 5px;">
+                <ng-content select="[filtro]"></ng-content>
+            </div>
+            <div class="row">               
+                <div class="col-md-12" style="text-align: end;">
+                    <button type="button" class="btn btn-success mr-1" [routerLink]="['new']"><i class="icofont icofont-plus"></i>NOVO</button>
+                    <button type="button" class="btn btn-outline-info"><i class="icofont icofont-search"></i>PESQUISAR</button>
+                </div>
+            </div>
+            <div class="row mt-3">               
+                <ng-content select="[datatable]"></ng-content>               
+            </div>
+        </app-card>
     </div>
 </div>

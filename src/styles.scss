@@ -1,5 +1,6 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "./assets/sass/variaveis";
+@import "./assets/sass/pdatatable";
 
 /* You can add global styles to this file, and also import other style files */
 body {
@@ -177,15 +178,15 @@ ul {
 
 .card {
   border-radius: 5px;
-  box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 46%);
   border: none;
   margin-bottom: 30px;
   .card-footer {
-    background-color: $color-white;
+    background-color: $color-fundo-card-footer;
     border-top: none;
   }
   .card-header {
-    background-color: transparent;
+    background-color: $color-fundo-card-cabecalho;
     border-bottom: none;
     padding: 25px 20px;
     .card-header-left {
@@ -11467,7 +11468,7 @@ body.menu-bottom #collapse-menu {
 .btn {
   border-radius: 2px;
   text-transform: capitalize;
-  font-size: 15px;
+  font-size: 0.8rem;
   padding: 10px 19px;
   cursor: pointer;
 }
@@ -12280,9 +12281,8 @@ body.menu-bottom #collapse-menu {
 }
 
 .form-control {
-  font-size: 14px;
-  border-radius: 2px;
-  border: 1px solid #cccccc;
+  font-size: 14px; 
+  border: 1px solid $color-cinza-medio;
   &:focus {
     border: 1px solid $color-primary;
   }
@@ -12318,7 +12318,8 @@ body.menu-bottom #collapse-menu {
   }
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 1;
+    background-color: #eee;
   }
 }
 
@@ -22973,3 +22974,18 @@ body.dark {
     color: $color-cinza-dark;
 }
 
+.ng-select.ng-select-disabled>.ng-select-container {
+    background-color: #eee !important;
+    .ng-arrow-wrapper .ng-arrow{
+       border-style: none; 
+    }
+}
+
+.btn{&:disabled {
+    cursor: not-allowed;   
+  }
+}
+
+label{
+    text-transform: Uppercase;
+}

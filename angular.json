@@ -21,6 +21,10 @@
               "src/favicon.ico"
             ],
             "styles": [
+                "node_modules/primeng/resources/themes/saga-blue/theme.css",
+                "node_modules/primeng/resources/primeng.min.css",
+                "node_modules/ngx-spinner/animations/timer.css",
+                "node_modules/primeicons/primeicons.css",
                 "node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
                 "node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "node_modules/font-awesome-scss/scss/font-awesome.scss",
@@ -130,11 +134,25 @@
   "defaultProject": "guru-able-v1.7.0",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
-      "style": "scss"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "app"
-    }
+        "prefix": "app",
+        "style": "scss",
+        "skipTests": true
+      },
+      "@schematics/angular:directive": {
+        "prefix": "app",
+        "skipTests": true
+      },
+      "@schematics/angular:angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        }
   }
 }

@@ -1,0 +1,21 @@
+<app-template-formulario 
+    [buttonLink]="'/simple-page'"
+    [titulo]="pageTitle"
+    (onEventoSalvar)="submitForm($event)"
+    (onEventoExcluir)="onExcluir()"
+    [formulario]="formulario"
+    [modoEdicao]="currentAction"
+>
+    <div formulario [formGroup]="formulario">
+        <div class="row">
+            <div class="col-md-2">
+                <label>Código</label>
+                <input type="number" class="form-control" formControlName="id">
+            </div>
+            <div class="col-md-10">
+                <label>Nome</label>
+                <input type="text" class="form-control" formControlName="nome">
+            </div>
+        </div>
+    </div>
+</app-template-formulario>

@@ -1,0 +1,67 @@
+<app-template-pesquisa titulo="CONSULTA DE EXEMPLO">
+    <div filtro class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-5 form-group">
+                    <label>Nome</label>
+                    <input class="form-control form-control-rounded" type="text" >
+                </div>
+                <div class="col-md-5 form-group">
+                    <label>Cidade</label>
+                    <input class="form-control form-control-rounded" type="text">
+                </div>
+                <div class="col-md-2 form-group">
+                    <label>UF</label>
+                    <input class="form-control form-control-rounded" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div datatable class="col-md-12">
+        <p-table 
+        (onRowSelect)="onRowSelect($event)"          
+            selectionMode="single"
+            styleClass="p-datatable-sm p-datatable-striped" 
+            currentPageReportTemplate="Exibindo {first} a {last} de {totalRecords} registros" 
+            [paginator]="true" [rows]="5" 
+            [showCurrentPageReport]="true" 
+            [value]="products" 
+            [tableStyle]="{'min-width': '100%'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th [width]="'1%'" style="max-width: 1%;">Código</th>
+                    <th [width]="'99%'" style="text-align: center; max-width: 99%;">Nome</th>                                
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+                <tr [pSelectableRow]="product" [pSelectableRowIndex]="rowIndex">
+                    <td style="text-align: center; max-width: 1%;">{{product.id}}</td>
+                    <td style="text-align: center; max-width: 99%;">{{product.nome}}</td>                               
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td [attr.colspan]="columns.length">
+                       Nenhum resultado encontrado
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+</app-template-pesquisa>
+
+<!-- <p-table [value]="products" selectionMode="single" (onRowSelect)="onRowSelect($event)">
+    <ng-template pTemplate="header">
+        <tr>
+            <th [width]="'1%'">Código</th>
+            <th [width]="'99%'" style="text-align: center;">Name</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr [pSelectableRow]="product">
+            <td style="text-align: center;">{{product.id}}</td>
+            <td style="text-align: center;">{{product.nome}}</td>
+        </tr>
+    </ng-template>
+</p-table> -->
