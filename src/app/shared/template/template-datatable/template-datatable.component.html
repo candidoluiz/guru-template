@@ -1,0 +1,42 @@
+<div datatable class="col-md-12">
+    <p-table   
+        (onRowSelect)="rowSelect($event)"          
+        selectionMode="single"
+        styleClass="p-datatable-sm p-datatable-striped" 
+        currentPageReportTemplate="Exibindo {last} de {totalRecords} registro(s)" 
+        [paginator]="true" [rows]="5" 
+        [showCurrentPageReport]="true" 
+        [value]="products" 
+        [tableStyle]="{'width': '100%'}">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <!-- <th  style="text-align: center; width: 150px;">Ações</th> -->
+                <th  style="text-align: center; max-width: 11%; width: 11%;">Código</th>
+                <th  style="text-align: left; max-width: 59%;">Nome</th>
+                <th  style="text-align: left; max-width: 40%;">Observação</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="product" [pSelectableRowIndex]="rowIndex">
+                <!-- <td style="text-align: center;">
+                    <span class="mr-3 editar"><i class="icofont icofont-pencil-alt-5"></i></span>
+                    <span class="mr-3 imprimir"><i class="icofont icofont-printer"></i></span>
+                    <span class=" excluir"><i class="icofont icofont-trash"></i></span>
+                </td> -->
+                <td style="text-align: center; max-width: 11%; width: 11%;"><span>{{product.id}}</span></td>
+                <td style="text-align: left; max-width: 59%;"><span>{{product.nome}}</span></td>
+                <td style="text-align: left; max-width: 40%;"><span>{{product.observacao}}</span></td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage" let-columns>
+            <tr>
+                <td [attr.colspan]="columns.length">
+                   Nenhum resultado encontrado
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

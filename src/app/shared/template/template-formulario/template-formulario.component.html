@@ -11,7 +11,7 @@
                 <div class="col-md-10" style="text-align: end;">
                     <button type="button" class="btn btn-success mr-1" (click)="onSalvar(false)" [disabled]="formulario.invalid"><i class="ti-save"></i>SALVAR</button>
                     <button type="button" class="btn btn-success" (click)="onSalvar(true)" [disabled]="formulario.invalid"><i class="ti-save"></i>SALVAR E VOLTAR</button>
-                    <button *ngIf="mostrarExcluir()" type="button" class="btn btn-danger ml-1" (click)="onExcluir()"><i class="ti-trash"></i>EXCLUIR</button>
+                    <button *ngIf="mostrarExcluir()" type="button" class="btn btn-danger ml-1" (click)="onExcluir()"><i class="icofont icofont-trash"></i>EXCLUIR</button>
                 </div>
             </div>
         </app-card>

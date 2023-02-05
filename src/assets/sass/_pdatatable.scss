@@ -7,7 +7,7 @@
   }
 
 .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
-    background: #cacaca;
+    background: $color-hover-tabela;
     color: #000000;
     cursor: pointer;
     opacity: 0.6;   
@@ -16,5 +16,26 @@
   .p-datatable{
     box-shadow: 0 4px 11px 0 rgb(0 0 0 / 46%);
   }
+
+  td .editar{
+    color: $color-warning !important;
+    cursor: pointer;
+  }
+
+  td .imprimir{
+    color: $color-success !important;
+    cursor: pointer;
+  }
+
+  td .excluir{
+    color: $color-danger !important;
+    cursor: pointer;
+  }
+
+  th{
+    text-transform: Uppercase;
+    font-weight: 500 !important;
+    font-size: 13px;
+}
 
     
