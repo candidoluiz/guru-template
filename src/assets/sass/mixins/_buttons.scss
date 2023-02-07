@@ -1,29 +1,95 @@
-.btn-success {
-    background-color: $color-success;
-    border-color: $color-success;
-    color: $color-white;
+ 
+  //Variables
+  $white: #FCFAF7;
+  $lightgrey: #D5D5D5;
+  $mediumgrey: #B1B1B1;
+  $darkgrey: #505155;
+  $primary: #34CED1;
+  $success: #7DCC3D;
+  $danger: #E64545;
+  $warning: #ffc107;
+  $shadow: 1px 1px 6px 1px rgba(15, 15, 35, .1);
+  $shadow-up: 3px 3px 8px -7px rgba(15, 15, 35, .3);
+  $default-radius: 8px;
+  
+  //Btn Map
+  $buttons: 
+  "primary" $primary $white,
+  "danger" $danger $white,
+  "success" $success $white,
+  "warning" $warning $darkgrey,
+  "dark" $darkgrey $white,
+  "secondary" $mediumgrey $white;
+  
+  // Fill Buttons
+  .btn {
+    align-self: flex-end;
+    border: none;
+    border-radius: $default-radius;
     cursor: pointer;
-    transition: all ease-in 0.3s;
-    &:hover {
-      background-color: #aacc77;
-      border-color: #aacc77;
-    }
-    &:active {
-      background-color: #73993a !important;
-      border-color: #73993a;
-      box-shadow: none;
-      color: $color-white;
-    }
-    &:focus {
-      box-shadow: none;
-      color: $color-white;
-    }
-    &.disabled {
-      background-color: rgba(147, 190, 82, 0.5);
-      border-color: rgba(147, 190, 82, 0.5);
+    font-size: 1rem;
+    height: 44px;
+    margin-top: 28px;
+    min-width: 120px;
+    padding: 0 10px;
+    width: auto;
+    @each $name, $bg, $color in $buttons {
+      &__#{$name} {
+        background-color: $bg;
+        box-shadow: $shadow;
+        color: $color;
+        transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        &:hover {
+          background-color: darken($bg, 5%);
+          box-shadow: $shadow-up;
+          box-shadow: 0 14px 26px -12px rgb(153 153 153 / 42%), 0 4px 23px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(153 153 153 / 20%);
+        }
+        &:active {
+          background-color: darken($bg, 10%);
+        }
+        &:focus {
+          //box-shadow: 0 0 0 3px darken($bg, 10%);
+          outline: none;
+        }
+        &:disabled {
+          border: none;
+          cursor: default;
+          opacity: .55;
+          pointer-events: none;
+          user-select: none;
+        }
+      }
+      &-outline__#{$name} {
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-color: $bg;
+        border-image: none;
+        color: $bg;
+        font-weight: 400;
+        transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        vertical-align: middle;
+        &:hover {
+          background-color: darken($bg, 5%);
+          box-shadow: $shadow-up;
+          color: $color;
+          box-shadow: 0 14px 26px -12px rgb(153 153 153 / 42%), 0 4px 23px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(153 153 153 / 20%);
+        }
+        &:active {
+          background-color: darken($bg, 10%);
+        }
+        &:focus {
+          //box-shadow: 0 0 0 3px darken($bg, 10%);
+          border: none;
+          outline: 0;
+        }
+        &:disabled {
+          border-color: $lightgrey;
+          color: $lightgrey;
+          cursor: default;
+          pointer-events: none;
+          user-select: none;
+        }
+      }
     }
   }
-
-@mixin btn-style($btn-color, $btn-states-color){
-    
-}
+  

@@ -1,6 +1,8 @@
-@import "~@ng-select/ng-select/themes/default.theme.css";
-@import "./assets/sass/variaveis";
-@import "./assets/sass/pdatatable";
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+// @import "./assets/sass/variaveis";
+// @import "./assets/sass/pdatatable";
+
+@import "./assets/sass/custom";
 
 /* You can add global styles to this file, and also import other style files */
 body {
@@ -11742,13 +11744,14 @@ body.menu-bottom #collapse-menu {
   border-color: $color-success;
   color: $color-white;
   cursor: pointer;
-  transition: all ease-in 0.3s;
+  transition: all ease-in 0.2s;
   &:hover {
     background-color: #aacc77;
     border-color: #aacc77;
+    box-shadow: 0 14px 26px -12px rgb(153 153 153 / 42%), 0 4px 23px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(153 153 153 / 20%);
   }
   &:active {
-    background-color: #73993a !important;
+    background-color: #73993a;
     border-color: #73993a;
     box-shadow: none;
     color: $color-white;
@@ -11757,9 +11760,13 @@ body.menu-bottom #collapse-menu {
     box-shadow: none;
     color: $color-white;
   }
-  &.disabled {
-    background-color: rgba(147, 190, 82, 0.5);
+  &:disabled {
+    background-color: rgba(147, 190, 82, 1);
     border-color: rgba(147, 190, 82, 0.5);
+    //pointer-events: none;
+    //user-select: none;
+    cursor: not-allowed !important;
+    box-shadow: none;
   }
 }
 
@@ -11774,7 +11781,7 @@ body.menu-bottom #collapse-menu {
     border-color: #444c67;
   }
   &:active {
-    background-color: #181a23 !important;
+    background-color: #181a23;
     border-color: #181a23;
     box-shadow: none;
     color: $color-white;
@@ -22981,10 +22988,6 @@ body.dark {
     }
 }
 
-.btn{&:disabled {
-    cursor: not-allowed;   
-  }
-}
 
 label{
     text-transform: Uppercase;

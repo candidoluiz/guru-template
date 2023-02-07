@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Exemplo } from './../model/exemplo';
+import { Component, Injector, OnInit } from '@angular/core';
+import { BaseConsultaComponent } from '../../../shared/components/base-components/base-consulta.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ExemploService } from '../service/exemplo.service';
 
 @Component({
     selector: 'app-simple-page-pesquisa',
     templateUrl: './simple-page-pesquisa.component.html'
 })
-export class SimplePagePesquisaComponent implements OnInit {
+export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> {
 
     constructor(
-        private router: Router,
-        private route: ActivatedRoute,
-    ) { }
+        private exemploService: ExemploService,
+        private formBuilder: FormBuilder,
+        protected override injector: Injector
+    ) { super(injector, exemploService)}
 
     products = [      
         {'id':1,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
@@ -23,16 +27,23 @@ export class SimplePagePesquisaComponent implements OnInit {
         {'id':8,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
         {'id':9,'nome':' uihrt erutihffd ihiuh iujhtuierhtet re uihrt erutih', observacao: 'fdfdfsds'},
     ]
-    ngOnInit(): void {
+
+    montarDatatable() {
+        
     }
 
-    onRowSelect(row){
-        console.log(row);               
+    montarFiltro(): FormGroup {
+        return null;
+        // return this.formBuilder.group({
+        //     codigo: '',
+        //     descricao: '',
+        //     size: this.datatable.tamanhoPagina,
+        //     page: this.datatable.numeroPagina
+        // });
     }
 
-    editar(event){
-        //this.router.navigate(event.id, { relativeTo: this.route });
-        this.router.navigate([event.data.id, "edit"], { relativeTo: this.route })
+    titulo(): string {
+        return 'CONSULTA DE EXEMPLO'
     }
 
 }

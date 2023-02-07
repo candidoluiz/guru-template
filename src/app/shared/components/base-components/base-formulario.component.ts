@@ -163,7 +163,7 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
     }
 
 
-    protected actionsForError(error) {
+    protected actionsForError(error) {        
         this.spinnerService.hide();
 
         this.submittingForm = false;
