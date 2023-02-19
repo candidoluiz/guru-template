@@ -1,4 +1,4 @@
-<div datatable class="col-md-12">
+<div datatable class="col-md-12" *ngIf="datatable">
     <p-table   
         (onRowSelect)="rowSelect($event)"          
         selectionMode="single"
@@ -10,11 +10,10 @@
         [tableStyle]="{'width': '100%'}">
 
         <ng-template pTemplate="header">
-            <tr>
-                <!-- <th  style="text-align: center; width: 150px;">Ações</th> -->
-                <th  style="text-align: center; max-width: 11%; width: 11%;">Código</th>
-                <th  style="text-align: left; max-width: 59%;">Nome</th>
-                <th  style="text-align: left; max-width: 40%;">Observação</th>
+            <tr>                              
+                <ng-container *ngFor="let coluna of colunas">
+                    <th [ngStyle]="onDefinirEstilo(coluna)">{{coluna?.titulo}}</th>
+                </ng-container>
             </tr>
         </ng-template>
 
@@ -25,12 +24,11 @@
                     <span class="mr-3 imprimir"><i class="icofont icofont-printer"></i></span>
                     <span class=" excluir"><i class="icofont icofont-trash"></i></span>
                 </td> -->
-                <td style="text-align: center; max-width: 11%; width: 11%;"><span>{{product.id}}</span></td>
-                <td style="text-align: left; max-width: 59%;"><span>{{product.nome}}</span></td>
-                <td style="text-align: left; max-width: 40%;"><span>{{product.observacao}}</span></td>
+                <ng-container *ngFor="let coluna of colunas">
+                    <td [ngStyle]="onDefinirEstilo(coluna)"><span>{{product[coluna.propriedade]}}</span></td>
+                </ng-container>                
             </tr>
         </ng-template>
-
         <ng-template pTemplate="emptymessage" let-columns>
             <tr>
                 <td [attr.colspan]="columns.length">

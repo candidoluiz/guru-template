@@ -28,6 +28,7 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
         this.spinnerService = this.injector.get(NgxSpinnerService);
     }
     ngOnInit(): void {
+        this.montarDatatable();
         
     }
 

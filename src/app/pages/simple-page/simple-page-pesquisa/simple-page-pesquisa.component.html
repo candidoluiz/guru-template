@@ -2,22 +2,29 @@
     <div filtro class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-5 form-group">
-                    <label>Nome</label>
-                    <input class="form-control form-control-rounded" type="text" >
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input class="form-control form-control-rounded" type="text" >
+                    </div>
                 </div>
-                <div class="col-md-5 form-group">
-                    <label>Cidade</label>
-                    <input class="form-control form-control-rounded" type="text">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Cidade</label>
+                        <input class="form-control form-control-rounded" type="text">
+                    </div>
                 </div>
-                <div class="col-md-2 form-group">
-                    <label>UF</label>
-                    <input class="form-control form-control-rounded" type="text">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>UF</label>
+                        <input class="form-control form-control-rounded" type="text">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <app-template-datatable datatable
+    <app-template-datatable table
+        [datatable]="dataDatable"
         (onRowSelect)="editar($event)"
         [products]="products">
     </app-template-datatable>

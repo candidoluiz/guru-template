@@ -1,14 +1,16 @@
 import { Exemplo } from './../model/exemplo';
 import { Component, Injector, OnInit } from '@angular/core';
-import { BaseConsultaComponent } from '../../../shared/components/base-components/base-consulta.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExemploService } from '../service/exemplo.service';
+import { DataTableBuilder } from 'src/app/shared/builder/datatable-builder/datatable-builder';
+import { BaseConsultaComponent } from 'src/app/shared/components/base-components/base-consulta.component';
 
 @Component({
     selector: 'app-simple-page-pesquisa',
     templateUrl: './simple-page-pesquisa.component.html'
 })
 export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> {
+    dataDatable;
 
     constructor(
         private exemploService: ExemploService,
@@ -29,20 +31,22 @@ export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> 
     ]
 
     montarDatatable() {
-        
+        this.dataDatable = DataTableBuilder
+            .builder()
+                .criarColunasSimples('Código','id',1)
+                .criarColunasSimples('Exemplo','nome')
+                .criarColunasSimples('Observação','observacao')
+            .construir();        
     }
 
-    montarFiltro(): FormGroup {
-        return null;
-        // return this.formBuilder.group({
-        //     codigo: '',
-        //     descricao: '',
-        //     size: this.datatable.tamanhoPagina,
-        //     page: this.datatable.numeroPagina
-        // });
+    montarFiltro(): FormGroup {        
+        return this.formBuilder.group({
+            codigo: '',
+            descricao: ''           
+        });
     }
 
-    titulo(): string {
+    titulo(): string {       
         return 'CONSULTA DE EXEMPLO'
     }
 
