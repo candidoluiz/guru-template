@@ -1,7 +1,7 @@
 import { EntidadeBase } from "../models/base-resource.model";
 
 import { Injector } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 
 import { Observable, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
@@ -19,6 +19,13 @@ export abstract class BaseResourceService<T extends EntidadeBase> {
     this.http = injector.get(HttpClient);    
   }
 
+  removeParametrosNull(data: any): any {
+    const parametros = {};
+    Object.keys(data).forEach(
+      key =>  data[key] !== null ? parametros[key] = data[key] : key);
+    return parametros;
+}
+
   getAll(): Observable<T[]> {
     return this.http.get(this.apiPath).pipe(
       map(this.jsonDataToResources.bind(this)),
@@ -26,8 +33,13 @@ export abstract class BaseResourceService<T extends EntidadeBase> {
     )
   }
 
-  consultaSumario(): Observable<T[]> {
-    return this.http.get(this.apiPath).pipe(
+  consultaSumario(parametros: any): Observable<T[]> {
+
+    if ( !(parametros instanceof HttpParams) ) {
+        parametros = this.removeParametrosNull(parametros);
+    }
+
+    return this.http.get(`${this.apiPath}/`, {params: parametros}).pipe(
       map(this.jsonDataToResources.bind(this)),
       catchError(this.handleError)
     )

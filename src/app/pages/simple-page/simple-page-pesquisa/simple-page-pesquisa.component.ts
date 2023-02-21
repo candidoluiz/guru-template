@@ -17,18 +17,6 @@ export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> 
         protected override injector: Injector
     ) { super(injector, exemploService)}
 
-    products = [      
-        {'id':1,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':2,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':3,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':4,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':5,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':6,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':7,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':8,'nome':' uihrt erutih', observacao: 'fdfdfsds'},
-        {'id':9,'nome':' uihrt erutihffd ihiuh iujhtuierhtet re uihrt erutih', observacao: 'fdfdfsds'},
-    ]
-
     montarDatatable() {
         return DataTableBuilder
             .builder()

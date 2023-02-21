@@ -1,16 +1,22 @@
 <div datatable class="col-md-12" *ngIf="datatable">
-    <p-table   
-        (onRowSelect)="rowSelect($event)"          
+    <p-table
+        (onRowSelect)="rowSelect($event)"
         selectionMode="single"
         styleClass="p-datatable-sm p-datatable-striped" 
         currentPageReportTemplate="Exibindo {last} de {totalRecords} registro(s)" 
-        [paginator]="true" [rows]="5" 
+        [paginator]="true" 
+        [rows]="5" 
+        (onLazyLoad)="pesquisar($event)" 
+        [lazy]="true"
         [showCurrentPageReport]="true" 
         [value]="products" 
-        [tableStyle]="{'width': '100%'}">
+        [tableStyle]="{'width': '100%'}"
+        [loading]="false"
+        [totalRecords]="totalRecords"
+    >
 
         <ng-template pTemplate="header">
-            <tr>                              
+            <tr>
                 <ng-container *ngFor="let coluna of colunas">
                     <th [ngStyle]="onDefinirEstilo(coluna)">{{coluna?.titulo}}</th>
                 </ng-container>
@@ -19,19 +25,16 @@
 
         <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
             <tr [pSelectableRow]="product" [pSelectableRowIndex]="rowIndex">
-                <!-- <td style="text-align: center;">
-                    <span class="mr-3 editar"><i class="icofont icofont-pencil-alt-5"></i></span>
-                    <span class="mr-3 imprimir"><i class="icofont icofont-printer"></i></span>
-                    <span class=" excluir"><i class="icofont icofont-trash"></i></span>
-                </td> -->
                 <ng-container *ngFor="let coluna of colunas">
                     <td [ngStyle]="onDefinirEstilo(coluna)"><span>{{product[coluna.propriedade]}}</span></td>
                 </ng-container>                
             </tr>
         </ng-template>
+
         <ng-template pTemplate="emptymessage" let-columns>
             <tr>
-                <td [attr.colspan]="columns.length">
+                <td [attr.colspan]="columns?.length">
+                    {{columns}}
                    Nenhum resultado encontrado
                 </td>
             </tr>

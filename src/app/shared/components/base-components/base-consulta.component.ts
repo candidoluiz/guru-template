@@ -15,6 +15,7 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     protected spinnerService: NgxSpinnerService;
     formulario: FormGroup;
     dataDatable;
+    itens;
 
     abstract montarFiltro(): FormGroup;
     abstract montarDatatable();
@@ -40,6 +41,7 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
 
     onInicializar(){
         this.formulario = this.montarFiltro();
+        this.buscarRegistros();
 
     }
 
@@ -51,8 +53,21 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
         this.router.navigate([event.data.id, "edit"], { relativeTo: this.route })        
     }
 
+    buscarRegistros(){
+        this.spinnerService.show();
+        this.service.consultaSumario(this.formulario.value).subscribe(ret=>{
+            if(ret){
+                this.itens = ret;
 
-    metodoBusca(service,parametros){
-        return service.consultaSumario(parametros);
-    }  
+            }
+            this.spinnerService.hide();
+        }, erro=>{
+            this.spinnerService.hide();
+            this.msgService.showMensagemErro('', erro);
+        })
+    }
+
+    // metodoBusca(service,parametros){
+    //     return service.consultaSumario(parametros);
+    // }  
 }

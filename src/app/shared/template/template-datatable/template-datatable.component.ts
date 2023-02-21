@@ -1,6 +1,7 @@
 import { Coluna } from './../../builder/model/coluna';
 import { DataTable } from './../../builder/model/datatable';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-template-datatable',
@@ -10,7 +11,7 @@ export class TemplateDatatableComponent implements OnInit {
     
     @Input() products;
     @Input() datatable: DataTable;
-    @Output() onRowSelect: EventEmitter<any> = new EventEmitter();
+    @Output() onRowSelect: EventEmitter<any> = new EventEmitter();   
 
   constructor() { }
 
@@ -21,8 +22,8 @@ export class TemplateDatatableComponent implements OnInit {
     this.onRowSelect.emit(event)
   }
 
-
   get colunas(): Coluna[]{return this.datatable.colunas;}
+  get totalRecords(){ return 0;}
 
   onDefinirEstilo(coluna: Coluna){
     return{
@@ -30,6 +31,9 @@ export class TemplateDatatableComponent implements OnInit {
         'max-width':`${coluna.tamanho}%`,
         'width':`${coluna.tamanho}%`
     }
+  } 
+
+  pesquisar(event: LazyLoadEvent){
 
   }
 
