@@ -33,13 +33,13 @@
 <div class="row" autocomplete="off">
     <div class="col-sm-12">
         <app-card [title]="titulo" [semRodape]="true">
-            <div class="content" style="margin-right: 5px;">
+            <div class="content">
                 <ng-content select="[filtro]"></ng-content>
             </div>
             <div class="row">               
                 <div class="col-md-12" style="text-align: end;">
                     <button type="button" class="btn btn-success mr-1" [routerLink]="['new']"><i class="icofont icofont-plus"></i>NOVO</button>
-                    <button type="button" class="btn btn-outline-info"><i class="icofont icofont-search"></i>PESQUISAR</button>
+                    <button (click)="onPesquisar()" type="button" class="btn btn-outline-info"><i class="icofont icofont-search"></i>PESQUISAR</button>
                 </div>
             </div>
             <div class="row mt-3">               

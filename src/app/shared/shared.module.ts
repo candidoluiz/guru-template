@@ -21,6 +21,8 @@ import { RouterModule } from '@angular/router';
 import { TemplatePesquisaComponent } from './template/template-pesquisa/template-pesquisa.component';
 import { PrimengModule } from '../core/design/primeng.module';
 import { TemplateDatatableComponent } from './template/template-datatable/template-datatable.component';
+import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { ErrorMsgComponent } from './components/validacao/error-msg/error-msg.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -53,7 +55,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ParentRemoveDirective,
     TemplateFormularioComponent,
     TemplatePesquisaComponent,
-    TemplateDatatableComponent
+    TemplateDatatableComponent,
+    CustomInputComponent,
+    ErrorMsgComponent
   ],
   exports: [
     AccordionAnchorDirective,
@@ -77,7 +81,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RouterModule,
     TemplatePesquisaComponent,
     PrimengModule,
-    TemplateDatatableComponent
+    TemplateDatatableComponent,
+    CustomInputComponent
 
     // ClickOutsideModule
   ],

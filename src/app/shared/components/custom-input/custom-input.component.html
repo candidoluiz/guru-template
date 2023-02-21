@@ -1,0 +1,30 @@
+
+
+<ng-container *ngIf="type == 'text'">
+    <div class="form-group" [ngClass]="aplicaCssErro()">
+        <label [attr.for]="idName()" class="control-label">{{ label }}</label>
+        <input class="form-control" 
+            [type]="type"        
+            [id]="idName()" 
+            [disabled]="!!isReadOnly" 
+            [(ngModel)]="value"
+            (blur)="onBlur()"
+        >
+        <app-error-msg [control]="control" [label]="label"></app-error-msg>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="type !== 'text'">
+    <div class="form-group" [ngClass]="aplicaCssErro()">
+        <label [attr.for]="idName()" class="control-label">{{ label }}</label>
+        <textarea class="form-control" 
+            [type]="type"        
+            [id]="idName()" 
+            [disabled]="!!isReadOnly" 
+            [(ngModel)]="value"
+            (blur)="onBlur()"
+            [attr.rows]="rows"
+        ></textarea>
+        <app-error-msg [control]="control" [label]="label"></app-error-msg>
+    </div>
+</ng-container>

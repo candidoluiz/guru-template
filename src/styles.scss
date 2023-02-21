@@ -22993,3 +22993,25 @@ label{
     text-transform: Uppercase;
     margin-bottom: 0px;
 }
+
+.has-error{
+    color: $color-danger;
+    .form-control, ng-select.ng-invalid.ng-touched .ng-select-container {
+      border-color: $color-danger;     
+    }
+  }
+
+  .form-group.has-error{
+    .form-control:focus{
+        box-shadow: 0 0 0 0.2rem rgb(244 67 54 / 21%);
+    }
+  }
+
+  .errorDiv {
+    color: $color-danger;
+    font-weight: bold;
+    font-size: 12px;
+    //padding: 0.2rem 1.25rem;
+    position: relative;
+    margin-bottom: 1rem;
+  }

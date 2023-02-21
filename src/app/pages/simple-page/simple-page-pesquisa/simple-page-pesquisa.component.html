@@ -1,24 +1,15 @@
-<app-template-pesquisa [titulo]="titulo()">
-    <div filtro class="row">
+<app-template-pesquisa [titulo]="titulo()" (onEventoPesquisar)="onPesquisar()">
+    <div filtro class="row" [formGroup]="formulario">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-5">
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input class="form-control form-control-rounded" type="text" >
-                    </div>
+                    <app-custom-input label="Nome" formControlName="nome"></app-custom-input>
                 </div>
                 <div class="col-md-5">
-                    <div class="form-group">
-                        <label>Cidade</label>
-                        <input class="form-control form-control-rounded" type="text">
-                    </div>
+                    <app-custom-input label="Cidade" formControlName="cidade"></app-custom-input>
                 </div>
                 <div class="col-md-2">
-                    <div class="form-group">
-                        <label>UF</label>
-                        <input class="form-control form-control-rounded" type="text">
-                    </div>
+                   <app-custom-input label="UF" formControlName="uf"></app-custom-input>
                 </div>
             </div>
         </div>

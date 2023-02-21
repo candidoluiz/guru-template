@@ -26,6 +26,13 @@ export abstract class BaseResourceService<T extends EntidadeBase> {
     )
   }
 
+  consultaSumario(): Observable<T[]> {
+    return this.http.get(this.apiPath).pipe(
+      map(this.jsonDataToResources.bind(this)),
+      catchError(this.handleError)
+    )
+  }
+
   getById(id: number): Observable<T> {
     const url = `${this.apiPath}/${id}`;
 

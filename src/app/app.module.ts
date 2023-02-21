@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './layout/admin/admin.component';
 import { BreadcrumbsComponent } from './layout/admin/breadcrumbs/breadcrumbs.component';

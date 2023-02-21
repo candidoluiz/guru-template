@@ -13,6 +13,8 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     protected router: Router;
     protected msgService: MensagemService;
     protected spinnerService: NgxSpinnerService;
+    formulario: FormGroup;
+    dataDatable;
 
     abstract montarFiltro(): FormGroup;
     abstract montarDatatable();
@@ -28,12 +30,21 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
         this.spinnerService = this.injector.get(NgxSpinnerService);
     }
     ngOnInit(): void {
-        this.montarDatatable();
-        
+        this.montarTAbela();
+        this.onInicializar();
     }
 
     ngOnDestroy(): void {
        
+    }
+
+    onInicializar(){
+        this.formulario = this.montarFiltro();
+
+    }
+
+    montarTAbela(){
+        this.dataDatable = this.montarDatatable();
     }
 
     editar(event){
@@ -43,5 +54,5 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
 
     metodoBusca(service,parametros){
         return service.consultaSumario(parametros);
-    }
+    }  
 }

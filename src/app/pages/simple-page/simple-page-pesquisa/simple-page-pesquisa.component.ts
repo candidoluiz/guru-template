@@ -1,5 +1,5 @@
 import { Exemplo } from './../model/exemplo';
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExemploService } from '../service/exemplo.service';
 import { DataTableBuilder } from 'src/app/shared/builder/datatable-builder/datatable-builder';
@@ -9,8 +9,7 @@ import { BaseConsultaComponent } from 'src/app/shared/components/base-components
     selector: 'app-simple-page-pesquisa',
     templateUrl: './simple-page-pesquisa.component.html'
 })
-export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> {
-    dataDatable;
+export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> { 
 
     constructor(
         private exemploService: ExemploService,
@@ -31,23 +30,28 @@ export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> 
     ]
 
     montarDatatable() {
-        this.dataDatable = DataTableBuilder
+        return DataTableBuilder
             .builder()
                 .criarColunasSimples('Código','id',1)
                 .criarColunasSimples('Exemplo','nome')
                 .criarColunasSimples('Observação','observacao')
-            .construir();        
+            .construir();
     }
 
     montarFiltro(): FormGroup {        
         return this.formBuilder.group({
-            codigo: '',
-            descricao: ''           
+            nome: '',
+            cidade: '',
+            uf: ''
         });
-    }
+    }  
 
     titulo(): string {       
         return 'CONSULTA DE EXEMPLO'
+    }
+
+    onPesquisar(){
+        
     }
 
 }
