@@ -27,7 +27,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
+    //HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
     NgxSpinnerModule
 
   ],

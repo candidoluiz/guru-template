@@ -4,37 +4,41 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
-  selector: 'app-template-datatable',
-  templateUrl: './template-datatable.component.html'
+    selector: 'app-template-datatable',
+    templateUrl: './template-datatable.component.html'
 })
 export class TemplateDatatableComponent implements OnInit {
-    
+
     @Input() products;
     @Input() datatable: DataTable;
-    @Output() onRowSelect: EventEmitter<any> = new EventEmitter();   
+    @Output() onRowSelect: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  rowSelect(event){
-    this.onRowSelect.emit(event)
-  }
-
-  get colunas(): Coluna[]{return this.datatable.colunas;}
-  get totalRecords(){ return 0;}
-
-  onDefinirEstilo(coluna: Coluna){
-    return{
-        'text-align':coluna.alinhamento,
-        'max-width':`${coluna.tamanho}%`,
-        'width':`${coluna.tamanho}%`
+    ngOnInit(): void {
     }
-  } 
 
-  pesquisar(event: LazyLoadEvent){
+    exibePaginacao(): boolean{
+        return this.products?.content?.length > 0;
+    }
 
-  }
+    rowSelect(event) {
+        this.onRowSelect.emit(event)
+    }
+
+    get colunas(): Coluna[] { return this.datatable.colunas; }   
+    get totalRecords() { return this.products?.totalElements; }
+
+    onDefinirEstilo(coluna: Coluna) {
+        return {
+            'text-align': coluna.alinhamento,
+            'max-width': `${coluna.tamanho}%`,
+            'width': `${coluna.tamanho}%`
+        }
+    }
+
+    pesquisar(event: LazyLoadEvent) {      
+
+    }
 
 }

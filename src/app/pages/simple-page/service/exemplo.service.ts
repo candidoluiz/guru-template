@@ -9,7 +9,7 @@ import { Exemplo } from '../model/exemplo';
 export class ExemploService extends BaseResourceService<Exemplo> {
 
   constructor(protected override injector: Injector) {
-    super("api/exemplo", injector, Exemplo.fromJson);
+    super("cores", injector, Exemplo.fromJson);
   }
 
 }

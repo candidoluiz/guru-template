@@ -4,12 +4,12 @@
         selectionMode="single"
         styleClass="p-datatable-sm p-datatable-striped" 
         currentPageReportTemplate="Exibindo {last} de {totalRecords} registro(s)" 
-        [paginator]="true" 
+        [paginator]="exibePaginacao()" 
         [rows]="5" 
         (onLazyLoad)="pesquisar($event)" 
         [lazy]="true"
         [showCurrentPageReport]="true" 
-        [value]="products" 
+        [value]="products?.content" 
         [tableStyle]="{'width': '100%'}"
         [loading]="false"
         [totalRecords]="totalRecords"
@@ -31,10 +31,9 @@
             </tr>
         </ng-template>
 
-        <ng-template pTemplate="emptymessage" let-columns>
+        <ng-template pTemplate="emptymessage" >
             <tr>
-                <td [attr.colspan]="columns?.length">
-                    {{columns}}
+                <td [attr.colspan]="colunas?.length">                   
                    Nenhum resultado encontrado
                 </td>
             </tr>

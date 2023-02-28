@@ -8,7 +8,7 @@ export class PaginaConsulta<T>{
         this.content = pagina.content;
         this.totalElements = pagina.totalElements;
         this.number = pagina.number;
-        this.size = pagina.size;
+        this.size = pagina.size;        
     }
 
     numeroPagina (){ return this.number;}

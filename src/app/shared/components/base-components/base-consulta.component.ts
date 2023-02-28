@@ -2,6 +2,7 @@ import { Injectable, Injector, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
+import { PaginaConsulta } from "../../builder/model/pagina-consulta";
 import { MensagemService } from "../../mensagem/mensagem.service";
 import { EntidadeBase } from "../../models/base-resource.model";
 import { BaseResourceService } from "../../service/base-resource.service";
@@ -15,7 +16,7 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     protected spinnerService: NgxSpinnerService;
     formulario: FormGroup;
     dataDatable;
-    itens;
+    itens: PaginaConsulta<T>;
 
     abstract montarFiltro(): FormGroup;
     abstract montarDatatable();
@@ -36,32 +37,31 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     }
 
     ngOnDestroy(): void {
-       
+
     }
 
-    onInicializar(){
+    onInicializar() {
         this.formulario = this.montarFiltro();
         this.buscarRegistros();
 
     }
 
-    montarTAbela(){
+    montarTAbela() {
         this.dataDatable = this.montarDatatable();
     }
 
-    editar(event){
-        this.router.navigate([event.data.id, "edit"], { relativeTo: this.route })        
+    editar(event) {
+        this.router.navigate([event.data.id, "edit"], { relativeTo: this.route })
     }
 
-    buscarRegistros(){
+    buscarRegistros() {
         this.spinnerService.show();
-        this.service.consultaSumario(this.formulario.value).subscribe(ret=>{
-            if(ret){
-                this.itens = ret;
-
+        this.service.consultaSumario(this.formulario.value).subscribe(ret => {
+            if (ret) {
+                this.itens = new PaginaConsulta(ret);
             }
             this.spinnerService.hide();
-        }, erro=>{
+        }, erro => {
             this.spinnerService.hide();
             this.msgService.showMensagemErro('', erro);
         })

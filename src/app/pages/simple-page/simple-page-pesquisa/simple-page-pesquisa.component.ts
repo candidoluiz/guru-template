@@ -9,37 +9,40 @@ import { BaseConsultaComponent } from 'src/app/shared/components/base-components
     selector: 'app-simple-page-pesquisa',
     templateUrl: './simple-page-pesquisa.component.html'
 })
-export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> { 
+export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> {
 
     constructor(
         private exemploService: ExemploService,
         private formBuilder: FormBuilder,
         protected override injector: Injector
-    ) { super(injector, exemploService)}
+    ) { super(injector, exemploService) }
 
     montarDatatable() {
         return DataTableBuilder
             .builder()
-                .criarColunasSimples('Código','id',1)
-                .criarColunasSimples('Exemplo','nome')
-                .criarColunasSimples('Observação','observacao')
+            .criarColunasSimples('Código', 'id', 1)
+            .criarColunasSimples('Nome', 'nome')
+            .criarColunasSimples('Observação', 'observacao')
             .construir();
     }
 
-    montarFiltro(): FormGroup {        
+    montarFiltro(): FormGroup {
+        this.itens
         return this.formBuilder.group({
             nome: '',
             cidade: '',
-            uf: ''
+            uf: '',
+            size: 5,
+            page: 0
         });
-    }  
+    }
 
-    titulo(): string {       
+    titulo(): string {
         return 'CONSULTA DE EXEMPLO'
     }
 
-    onPesquisar(){
-        
+    onPesquisar() {
+
     }
 
 }
