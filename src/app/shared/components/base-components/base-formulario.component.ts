@@ -18,6 +18,8 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
     serverErrorMessages: string[] = null;
     submittingForm: boolean = false;
     voltar = false;
+    protected msgService: MensagemService;
+    protected spinnerService: NgxSpinnerService;
 
     protected route: ActivatedRoute;
     protected router: Router;
@@ -27,13 +29,13 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
         protected injector: Injector,
         public resource: T,
         protected resourceService: BaseResourceService<T>,
-        protected jsonDataToResourceFn: (jsonData) => T,
-        protected msgService: MensagemService,
-        protected spinnerService: NgxSpinnerService
+        protected jsonDataToResourceFn: (jsonData) => T,      
     ) {
         this.route = this.injector.get(ActivatedRoute);
         this.router = this.injector.get(Router);
         this.formBuilder = this.injector.get(FormBuilder);
+        this.msgService = this.injector.get(MensagemService);
+        this.spinnerService = this.injector.get(NgxSpinnerService);
     }
 
     ngOnInit() {

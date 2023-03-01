@@ -31,18 +31,12 @@ export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> 
         return this.formBuilder.group({
             nome: '',
             cidade: '',
-            uf: '',
-            size: 5,
-            page: 0
+            uf: ''        
         });
     }
 
     titulo(): string {
         return 'CONSULTA DE EXEMPLO'
-    }
-
-    onPesquisar() {
-
-    }
+    }   
 
 }

@@ -16,7 +16,7 @@ export class SimplePageComponent extends BaseFormularioComponent<Exemplo> {
         protected override injector: Injector, 
         msgService: MensagemService,
         protected spinner: NgxSpinnerService){
-        super(injector, new Exemplo(), exemploService, Exemplo.fromJson, msgService, spinner);
+        super(injector, new Exemplo(), exemploService, Exemplo.fromJson);
     }
 
   protected buildResourceForm(): void {

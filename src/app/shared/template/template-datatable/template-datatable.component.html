@@ -5,7 +5,7 @@
         styleClass="p-datatable-sm p-datatable-striped" 
         currentPageReportTemplate="Exibindo {last} de {totalRecords} registro(s)" 
         [paginator]="exibePaginacao()" 
-        [rows]="5" 
+        [rows]="qntRegistro" 
         (onLazyLoad)="pesquisar($event)" 
         [lazy]="true"
         [showCurrentPageReport]="true" 
@@ -13,6 +13,7 @@
         [tableStyle]="{'width': '100%'}"
         [loading]="false"
         [totalRecords]="totalRecords"
+        [(first)]="first"
     >
 
         <ng-template pTemplate="header">

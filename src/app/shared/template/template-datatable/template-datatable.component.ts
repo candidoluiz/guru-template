@@ -11,14 +11,18 @@ export class TemplateDatatableComponent implements OnInit {
 
     @Input() products;
     @Input() datatable: DataTable;
+    @Input() qntRegistro: number = 5;   
     @Output() onRowSelect: EventEmitter<any> = new EventEmitter();
+    @Output() onEventoMudarPagina: EventEmitter<any> = new EventEmitter();
 
+    first: number = 0;
+   
     constructor() { }
 
     ngOnInit(): void {
     }
 
-    exibePaginacao(): boolean{
+    exibePaginacao(): boolean {
         return this.products?.content?.length > 0;
     }
 
@@ -26,7 +30,7 @@ export class TemplateDatatableComponent implements OnInit {
         this.onRowSelect.emit(event)
     }
 
-    get colunas(): Coluna[] { return this.datatable.colunas; }   
+    get colunas(): Coluna[] { return this.datatable.colunas; }
     get totalRecords() { return this.products?.totalElements; }
 
     onDefinirEstilo(coluna: Coluna) {
@@ -37,8 +41,12 @@ export class TemplateDatatableComponent implements OnInit {
         }
     }
 
-    pesquisar(event: LazyLoadEvent) {      
+    pesquisar(event: LazyLoadEvent) {
+        this.onEventoMudarPagina.emit(event)
+    }
 
+    resetPaginacao(){
+        this.first = 0;
     }
 
 }

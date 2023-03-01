@@ -1,5 +1,5 @@
 import { Injectable, Injector, OnDestroy, OnInit } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
 import { PaginaConsulta } from "../../builder/model/pagina-consulta";
@@ -14,6 +14,7 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     protected router: Router;
     protected msgService: MensagemService;
     protected spinnerService: NgxSpinnerService;
+    protected qntRegistro = 5;
     formulario: FormGroup;
     dataDatable;
     itens: PaginaConsulta<T>;
@@ -32,8 +33,8 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
         this.spinnerService = this.injector.get(NgxSpinnerService);
     }
     ngOnInit(): void {
-        this.montarTAbela();
         this.onInicializar();
+        this.montarTabela();
     }
 
     ngOnDestroy(): void {
@@ -42,11 +43,9 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
 
     onInicializar() {
         this.formulario = this.montarFiltro();
-        this.buscarRegistros();
-
     }
 
-    montarTAbela() {
+    montarTabela() {
         this.dataDatable = this.montarDatatable();
     }
 
@@ -54,20 +53,45 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
         this.router.navigate([event.data.id, "edit"], { relativeTo: this.route })
     }
 
+    onPesquisar() {    
+        this.onMudarPagina({first:0, rows:this.qntRegistro})
+    }
+
+    onMudarPagina(val){
+        this.paginacao(val);
+        this.buscarRegistros();
+    }
+
+    private paginacao(val){
+        this.formulario.addControl('page',new FormControl(''))
+        this.formulario.addControl('size',new FormControl(''))
+        
+        this.formulario.get("page").setValue(this.paginaSelecionada(val.rows, val.first));
+        this.formulario.get("size").setValue(val.rows);
+    }  
+
+    private paginaSelecionada(quantidade, pagina){
+        return pagina/quantidade
+    }
+
     buscarRegistros() {
         this.spinnerService.show();
         this.service.consultaSumario(this.formulario.value).subscribe(ret => {
             if (ret) {
-                this.itens = new PaginaConsulta(ret);
+                this.retornoBusca(ret);
             }
             this.spinnerService.hide();
         }, erro => {
             this.spinnerService.hide();
-            this.msgService.showMensagemErro('', erro);
+            this.erroBusca(erro);
         })
     }
 
-    // metodoBusca(service,parametros){
-    //     return service.consultaSumario(parametros);
-    // }  
+    protected retornoBusca(retorno) {
+        this.itens = new PaginaConsulta(retorno);
+    }
+
+    protected erroBusca(erro) {
+        this.msgService.showMensagemErro('', erro);
+    }  
 }
