@@ -18,9 +18,14 @@ $color-dark:            #2b3d51;
 $color-muted:           #919aa3;
 $color-custom:          #64b0f2;
 
+$color-primaria: $color-cinza-dark;
+//$color-secundaria;
+//$color-terciaria;
 
-$color-cabecalho-lateral: $color-cinza-dark;
-$color-cabecalho-topo:    $color-white;
+$color-cabecalho-lateral: $color-primaria;
+$color-cabecalho-topo:    $color-primaria;
+$color-cabecalho-tabela:  $color-primaria;
+
 $color-fundo-card-cabecalho: $color-cinza-claro;
 $color-fundo-card-footer: $color-cinza-claro;
 $color-hover-tabela: $color-azul-claro;

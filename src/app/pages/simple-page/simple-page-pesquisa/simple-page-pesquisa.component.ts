@@ -13,7 +13,6 @@ export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> 
 
     constructor(
         private exemploService: ExemploService,
-        private formBuilder: FormBuilder,
         protected override injector: Injector
     ) { super(injector, exemploService) }
 
@@ -27,16 +26,11 @@ export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> 
     }
 
     montarFiltro(): FormGroup {
-        this.itens
-        return this.formBuilder.group({
-            nome: '',
-            cidade: '',
-            uf: ''        
-        });
+        return Exemplo.montarFiltro();
     }
 
     titulo(): string {
         return 'CONSULTA DE EXEMPLO'
-    }   
+    }
 
 }

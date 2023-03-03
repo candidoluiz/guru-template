@@ -38,3 +38,8 @@
     font-size: 13px;
     white-space: nowrap;
 }
+
+.p-datatable .p-datatable-thead > tr > th { 
+    color: #ffffff;
+    background: $color-cabecalho-tabela;   
+}
