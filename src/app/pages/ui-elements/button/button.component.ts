@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { MensagemService } from '../../../../shared/mensagem/mensagem.service';
+import { MensagemService } from '../../../shared/mensagem/mensagem.service';
 
 
 @Component({
     selector: 'app-button',
-    templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss']
+    templateUrl: './button.component.html'
 })
 export class ButtonComponent implements OnInit {
     modal: NgbModalRef;

@@ -5,16 +5,11 @@ import {AccordionAnchorDirective, AccordionDirective, AccordionLinkDirective} fr
 import {CardRefreshDirective} from './card/card-refresh.directive';
 import {CardToggleDirective} from './card/card-toggle.directive';
 import {CardComponent} from './card/card.component';
-import {ModalAnimationComponent} from './modal-animation/modal-animation.component';
-import {ModalBasicComponent} from './modal-basic/modal-basic.component';
-import {DataFilterPipe} from './element/data-filter.pipe';
 import {MenuItems} from './menu-items/menu-items';
-import {ParentRemoveDirective} from './element/parent-remove.directive';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-// import {ClickOutsideModule} from 'ng-click-outside';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TemplateFormularioComponent } from './template/template-formulario/template-formulario.component';
 import { RouterModule } from '@angular/router';
@@ -32,7 +27,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   imports: [
     CommonModule,
     PerfectScrollbarModule,
-    // ClickOutsideModule,
     NgbModule,
     NgSelectModule,
     FormsModule,
@@ -48,11 +42,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccordionDirective,
     CardRefreshDirective,
     CardToggleDirective,
-    CardComponent,
-    ModalAnimationComponent,
-    ModalBasicComponent,
-    DataFilterPipe,
-    ParentRemoveDirective,
+    CardComponent,   
     TemplateFormularioComponent,
     TemplatePesquisaComponent,
     TemplateDatatableComponent,
@@ -65,11 +55,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccordionDirective,
     CardRefreshDirective,
     CardToggleDirective,
-    CardComponent,
-    ModalAnimationComponent,
-    ModalBasicComponent,
-    DataFilterPipe,
-    ParentRemoveDirective,
+    CardComponent,   
     NgbModule,
     PerfectScrollbarModule,
     NgSelectModule,

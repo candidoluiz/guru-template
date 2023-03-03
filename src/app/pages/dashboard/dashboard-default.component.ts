@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import '../../../../assets/charts/amchart/amcharts.js';
-import '../../../../assets/charts/amchart/gauge.js';
-import '../../../../assets/charts/amchart/pie.js';
-import '../../../../assets/charts/amchart/serial.js';
-import '../../../../assets/charts/amchart/light.js';
-import '../../../../assets/charts/amchart/ammap.js';
-import '../../../../assets/charts/amchart/worldLow.js';
+import '../../../assets/charts/amchart/amcharts.js';
+import '../../../assets/charts/amchart/gauge.js';
+import '../../../assets/charts/amchart/pie.js';
+import '../../../assets/charts/amchart/serial.js';
+import '../../../assets/charts/amchart/light.js';
+import '../../../assets/charts/amchart/ammap.js';
+import '../../../assets/charts/amchart/worldLow.js';
 
 declare const AmCharts: any;
 declare const $: any;
@@ -14,10 +14,7 @@ declare const $: any;
 @Component({
   selector: 'app-dashboard-default',
   templateUrl: './dashboard-default.component.html',
-  styleUrls: [
-    './dashboard-default.component.scss',
-    '../../../../assets/icon/svg-animated/svg-weather.css'
-  ]
+  styleUrls: [ '../../../assets/icon/svg-animated/svg-weather.css']
 })
 export class DashboardDefaultComponent implements OnInit {
   totalValueGraphData1 = buildChartJS('#fff', [45, 25, 35, 20, 45, 20, 40, 10, 30, 45], '#3a73f1', 'transparent');

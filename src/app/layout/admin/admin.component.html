@@ -20,9 +20,7 @@
           <a [routerLink]="['/']">
             <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo"/>
           </a>
-          <a (click)="onMobileMenu()" class="mobile-options">
-            <i class="ti-more"></i>
-          </a>
+       
         </div>
 
     
@@ -253,7 +251,6 @@
                     <!-- <perfect-scrollbar [style.max-width]="'100%'" [style.max-height]="'calc(100vh - 230px)'" [config]="config"> -->
                         <div class="page-wrapper">
                             <app-title></app-title>
-                            <!-- <app-breadcrumbs></app-breadcrumbs> -->
                             <div class="page-body">
                                 <router-outlet>
                                     <!-- <app-spinner></app-spinner> -->

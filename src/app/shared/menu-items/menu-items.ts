@@ -62,14 +62,7 @@ const MENUITEMS = [
   },
   {
     label: 'Map And Extra Pages ',
-    main: [
-      {
-        state: 'map',
-        short_label: 'M',
-        name: 'Maps',
-        type: 'link',
-        icon: 'ti-map-alt'
-      },
+    main: [    
       {
         state: 'authentication',
         short_label: 'A',

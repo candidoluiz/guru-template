@@ -43,7 +43,7 @@ export class AccordionDirective implements OnInit {
   }
 
   ngOnInit(): any {
-    this._router = (this.router.events).filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+    this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
       this.countState = 0;
       this.navlinks.forEach((link: AccordionLinkDirective) => {
         if (link.group) {

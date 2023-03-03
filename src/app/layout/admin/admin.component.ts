@@ -5,7 +5,6 @@ import { MenuItems } from '../../shared/menu-items/menu-items';
 @Component({
     selector: 'app-admin',
     templateUrl: './admin.component.html',
-    styleUrls: ['./admin.component.scss'],
     animations: [
         trigger('mobileMenuTop', [
             state('no-block, void',

@@ -4,7 +4,6 @@ import {animate, style, transition, trigger} from '@angular/animations';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
   animations: [
     trigger('fadeInOutTranslate', [
       transition(':enter', [
