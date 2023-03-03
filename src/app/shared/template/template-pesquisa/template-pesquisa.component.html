@@ -22,7 +22,7 @@
                 </ng-container>
 
                 <ng-container *ngIf="dataTablePersonalizado">
-                    <ng-template *ngTemplateOutlet="dataTablePersonalizado"  ></ng-template>
+                    <ng-template *ngTemplateOutlet="dataTablePersonalizado, context: { $implicit: products}"></ng-template>
                 </ng-container>
               
             </div>
