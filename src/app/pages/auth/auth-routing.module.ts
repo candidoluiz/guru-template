@@ -11,11 +11,11 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        loadChildren: () => import('./login/basic-login/basic-login.module').then(m => m.BasicLoginModule)
+        loadChildren: () => import('./login/basic-login.module').then(m => m.BasicLoginModule)
       },
       {
         path: 'registration',
-        loadChildren: () => import('./registration/basic-reg/basic-reg.module').then(m => m.BasicRegModule)
+        loadChildren: () => import('./registration/basic-reg.module').then(m => m.BasicRegModule)
       }
     ]
   }
