@@ -1,5 +1,6 @@
-<div datatable class="col-md-12" *ngIf="datatable">
+<div class="col-md-12" *ngIf="datatable">
     <p-table
+        responsiveLayout="scroll"
         (onRowSelect)="rowSelect($event)"
         selectionMode="single"
         styleClass="p-datatable-sm p-datatable-striped" 
