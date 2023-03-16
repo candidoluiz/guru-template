@@ -1,0 +1,70 @@
+$white: #fff;
+$text: #393939;
+$font-std: 18px;
+$transition-std: 0.4s ease all;
+$primary: #f8e421;
+$secondary: #354052;
+
+@function contrastText($color) {
+    $result: invert($color);
+    $lightness: lightness($result);
+    @if ($lightness < 50) {
+        @return black;
+    }
+    @return $result;
+}
+
+@mixin buttonStyles($color) {
+    font-size: $font-std;
+    padding: 1rem 3rem;
+    background-color: $color;
+    color: contrastText($color);
+    transition: $transition-std;
+
+    &:hover {
+        cursor: pointer;
+        background-color: lighten($color, 15%);
+    }
+    &:focus {
+        background-color: lighten($color, 10%);
+    }
+    &:active {
+        background-color: lighten($color, 25%);
+    }
+    &:disabled{
+      background-color: lighten($color, 30%);
+    }
+}
+.btnPrimary {
+    @include buttonStyles($primary);
+}
+.btnSecondary {
+    @include buttonStyles($secondary);
+   
+}
+.btnTest {
+    @include buttonStyles(#888);
+}
+
+.testRed {
+    @include buttonStyles(#111831);
+}
+
+.testGreen {
+    @include buttonStyles(green);
+}
+
+.testBlue {
+    @include buttonStyles(blue);
+}
+.testOrange {
+    @include buttonStyles(orange);
+}
+
+.testPurple {
+    @include buttonStyles(purple);
+}
+
+.testYellow {
+    @include buttonStyles(yellow);
+}

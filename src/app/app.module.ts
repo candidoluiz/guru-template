@@ -9,6 +9,7 @@ import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    NgxSpinnerModule
+    OAuthModule.forRoot(),
+    NgxSpinnerModule,
 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],

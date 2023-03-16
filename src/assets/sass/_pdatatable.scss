@@ -1,5 +1,5 @@
 .p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) {
-    background: #eee;
+    background: $color-datatable-zebrado;
 }
 
 .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight) {
@@ -8,9 +8,9 @@
 
 .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
     background: $color-hover-tabela;
-    color: #000000;
+    color: $color-hover-tabela-texto;    
     cursor: pointer;
-    opacity: 0.6;   
+    
   }
 
   .p-datatable{

@@ -1,0 +1,14 @@
+@function contrastText($color) {
+    $result: invert($color);
+    $lightness: lightness($result);
+
+    @if ($lightness < 50) {
+        @return $color-black;
+    }
+
+    @return $color-white;
+}
+
+@mixin colorContrast($color) {
+    color: contrastText($color);
+}

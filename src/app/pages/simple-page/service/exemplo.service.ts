@@ -4,12 +4,12 @@ import { BaseResourceService } from '../../../shared/service/base-resource.servi
 import { Exemplo } from '../model/exemplo';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ExemploService extends BaseResourceService<Exemplo> {
 
-  constructor(protected override injector: Injector) {
-    super("cores", injector, Exemplo.fromJson);
-  }
+    constructor(protected override injector: Injector) {
+        super("cores", injector, Exemplo.fromJson);
+    }
 
 }

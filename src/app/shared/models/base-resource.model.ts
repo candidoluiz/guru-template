@@ -1,7 +1,7 @@
 export abstract class EntidadeBase {
-  id?: number;
+    id?: number;
 
-  constructor(){
-    this.id = null;
-}
+    constructor() {
+        this.id = null;
+    }
 }

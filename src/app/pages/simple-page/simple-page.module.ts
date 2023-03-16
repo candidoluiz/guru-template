@@ -6,10 +6,10 @@ import { SimplePageComponent } from './simple-page-form/simple-page.component';
 
 
 @NgModule({
-  imports: [
-    SimplePageRoutingModule,
-    SharedModule
-  ],
-  declarations: [SimplePageComponent, SimplePagePesquisaComponent]
+    imports: [
+        SimplePageRoutingModule,
+        SharedModule
+    ],
+    declarations: [SimplePageComponent, SimplePagePesquisaComponent]
 })
 export class SimplePageModule { }

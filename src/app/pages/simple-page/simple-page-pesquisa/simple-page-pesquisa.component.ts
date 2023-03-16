@@ -1,6 +1,6 @@
 import { Exemplo } from './../model/exemplo';
 import { Component, Injector } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ExemploService } from '../service/exemplo.service';
 import { DataTableBuilder } from 'src/app/shared/builder/datatable-builder/datatable-builder';
 import { BaseConsultaComponent } from 'src/app/shared/components/base-components/base-consulta.component';

@@ -13,14 +13,14 @@
   $default-radius: 8px;
   
   //Btn Map
-  $buttons: 
-  "primary" $primary $white,
-  "danger" $danger $white,
-  "success" $success $white,
-  "warning" $warning $darkgrey,
-  "dark" $darkgrey $white,
-  "secondary" $mediumgrey $white;
-  
+  $buttons: (
+      "primary": $primary $white,
+      "danger": $danger $white,
+      "success": $success $white,
+      "warning": $warning $darkgrey,
+      "dark": $darkgrey $white,
+      "secondary": $mediumgrey $white
+  );
   // Fill Buttons
   .btn {
     align-self: flex-end;

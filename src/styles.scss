@@ -9,7 +9,7 @@ body {
   background-color: $color-ice;
   font-size: 0.875em;
   overflow-x: hidden;
-  color: #353c4e;
+  color: $color-cinza-dark;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -252,7 +252,7 @@ ul {
       letter-spacing: 1px;
     }
     code {
-      background-color: #eee;
+      background-color: $color-ice;
       margin: 5px;
       display: inline-block;
     }
@@ -2971,7 +2971,7 @@ table.matrics-table tr:first-child td {
     background-color: $color-default;
     border-color: #d4d4d4;
     border-radius: 0;
-    color: #000;
+    color: $color-black;
   }
   .product-price {
     display: inline-block;
@@ -4662,7 +4662,7 @@ a {
   top: 0;
   left: 0;
   z-index: 999999;
-  background: #000000;
+  background: $color-black;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -4689,7 +4689,7 @@ a {
       vertical-align: top;
       > a {
         display: block;
-        color: #000;
+        color: $color-black;
         width: 140px;
         font-size: 15px;
         padding: 15px 0;
@@ -4697,7 +4697,7 @@ a {
           margin-top: 10px;
         }
         &:hover {
-          background-color: #eee;
+          background-color: $color-ice;
         }
       }
     }
@@ -7222,7 +7222,7 @@ $col:#FF5370,#E53935,#f07178,#FF5370,#F78C6C,#F76D47,#FFCB6B,#FFB62C,#C3E88D,#91
         cursor: pointer;
       }
       span {
-        color: #000;
+        color: $color-black;
         display: block;
         font-size: 14px;
         text-transform: capitalize;
@@ -7245,7 +7245,7 @@ $col:#FF5370,#E53935,#f07178,#FF5370,#F78C6C,#F76D47,#FFCB6B,#FFB62C,#C3E88D,#91
     .more-details a {
       padding: 10px 25px;
       display: block;
-      color: #000;
+      color: $color-black;
       transition: all ease-in .3s;
       &:hover {
         color: $color-primary;
@@ -7580,7 +7580,7 @@ $col:#FF5370,#E53935,#f07178,#FF5370,#F78C6C,#F76D47,#FFCB6B,#FFB62C,#C3E88D,#91
 .pcoded-main-container {
   display: block;
   position: relative;
-  background: #F6F7FB;
+  background: $color-fundo-container;
   min-height: calc(100vh - 80px);
 }
 
@@ -8272,7 +8272,7 @@ $col:#FF5370,#E53935,#f07178,#FF5370,#F78C6C,#F76D47,#FFCB6B,#FFB62C,#C3E88D,#91
     }
   }
   .pcoded-overlay-box {
-    background: #000 none repeat scroll 0 0;
+    background: $color-black none repeat scroll 0 0;
     bottom: 0;
     height: 100%;
     position: fixed;
@@ -10359,10 +10359,10 @@ body {
           font-weight: 600;
         }
         &.pcoded-hasmenu:hover > a {
-          color: #000 !important;
+          color: $color-black !important;
         }
         &:hover > a {
-          color: #000 !important;
+          color: $color-black !important;
           background: $color-white;
           &:before {
             border-left-color: transparent !important;
@@ -10375,11 +10375,11 @@ body {
         .main-menu-header {
           background-color: $color-white;
           .user-details span {
-            color: #000;
+            color: $color-black;
           }
         }
         .main-menu-content .more-details a {
-          color: #000;
+          color: $color-black;
         }
       }
       .pcoded-item {
@@ -10387,35 +10387,35 @@ body {
           background: $color-white;
           li > a {
             border-bottom-color: #e6e6e6;
-            color: #000;
+            color: $color-black;
           }
         }
         > li {
           &.pcoded-hasmenu {
             > a:after, .pcoded-submenu li.pcoded-hasmenu > a:after {
-              color: #000;
+              color: $color-black;
             }
             &.pcoded-trigger {
               > a:after, .pcoded-submenu li.pcoded-hasmenu.pcoded-trigger > a:after {
-                color: #000;
+                color: $color-black;
               }
             }
           }
           &.active:hover > a, &:hover > a {
             background: $color-white;
-            color: #000;
+            color: $color-black;
           }
         }
         .pcoded-hasmenu .pcoded-submenu li {
           &:hover > a {
             background-color: $color-white;
-            color: #000;
+            color: $color-black;
             &:before {
               border-left-color: $color-white;
             }
           }
           &.active > a {
-            color: #000;
+            color: $color-black;
             .pcoded-mtext {
               &:before {
                 border-bottom-color: $color-white;
@@ -10439,7 +10439,7 @@ body {
             border-left-color: $color-white;
           }
           &.pcoded-hasmenu:hover > a:after {
-            color: #000;
+            color: $color-black;
           }
           &.pcoded-trigger {
             > a {
@@ -10454,7 +10454,7 @@ body {
             color: $color-white;
           }
           > a {
-            color: #000 !important;
+            color: $color-black !important;
           }
           &.active > a {
             background: $color-white !important;
@@ -11075,7 +11075,7 @@ body {
     }
     &[fream-type="1"] {
       .cont:after, .head:after {
-        background: #000;
+        background: $color-black;
       }
     }
     &[fream-type="2"] {
@@ -12326,7 +12326,7 @@ body.menu-bottom #collapse-menu {
   &:disabled {
     cursor: not-allowed;
     opacity: 1;
-    background-color: #eee;
+    background-color: $color-ice;
   }
 }
 
@@ -13121,7 +13121,7 @@ body.menu-bottom #collapse-menu {
       opacity: 1;
       border-color: $color-primary;
       .border-checkbox-label:before {
-        border-color: #eee;
+        border-color: $color-ice;
       }
     }
     .border-checkbox-label {
@@ -13138,8 +13138,8 @@ body.menu-bottom #collapse-menu {
         width: 6px;
         height: 12px;
         opacity: 0.9;
-        border-right: 2px solid #eee;
-        border-top: 2px solid #eee;
+        border-right: 2px solid $color-ice;
+        border-top: 2px solid $color-ice;
         position: absolute;
         left: 4px;
         top: 11px;
@@ -13615,7 +13615,7 @@ body.menu-bottom #collapse-menu {
     &:disabled + label {
       opacity: 0.65;
       &::before {
-        background-color: #eee;
+        background-color: $color-ice;
         cursor: not-allowed;
       }
     }
@@ -14615,11 +14615,11 @@ table {
 }
 
 .bg-amazon {
-  background-color: #000;
+  background-color: $color-black;
 }
 
 .text-amazon {
-  color: #000;
+  color: $color-black;
 }
 
 .bg-c-blue {
@@ -16585,7 +16585,7 @@ table {
     }
     .dial {
       font-size: 44px !important;
-      color: #000 !important;
+      color: $color-black !important;
     }
   }
 }
@@ -20279,7 +20279,7 @@ table {
   }
   .sb-item-head a .toggle-icon {
     &:before {
-      background: #000000;
+      background: $color-black;
       content: ' ';
       height: 100%;
       left: 50%;
@@ -20288,7 +20288,7 @@ table {
       width: 1px;
     }
     &:after {
-      background: #000000;
+      background: $color-black;
       content: ' ';
       height: 100%;
       left: 50%;
@@ -20321,7 +20321,7 @@ table {
 
 .sb-item {
   &.is-collapsed .sb-item-head > a {
-    color: #000;
+    color: $color-black;
   }
   .sb-item-head > a {
     color: #014c8c;
@@ -21375,7 +21375,7 @@ agm-map, vector_map {
     }
     thead tr:first-child {
       th {
-        color: #000;
+        color: $color-black;
         width: 100%;
         font-size: 25px;
         color: #757575 !important;

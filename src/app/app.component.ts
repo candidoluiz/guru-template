@@ -1,3 +1,4 @@
+import { ThemeService } from './shared/service/theme.service';
 import {Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 
@@ -9,9 +10,10 @@ import {NavigationEnd, Router} from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'Welcome';
 
-  constructor(private router: Router) { }
+  constructor(private themeService: ThemeService, private router: Router) { }
 
   ngOnInit() {
+    //this.themeService.setLightTheme();
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;

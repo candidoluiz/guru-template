@@ -1,11 +1,17 @@
+@use "sass:map";
 $color-white:           #fff;
+$color-black:           #000;
 $color-ice:             #f3f3f3;
 $color-rose:            #f0b1ce;
 $color-cinza-dark:      #303548;
+$color-cinza-80:        #353c4e;
 $color-cinza-claro:     #e9e9e969;
 $color-cinza-medio:     #789;
 $color-cinza-10:        #cacaca;
+$color-cinza-5:         #eee;
 $color-azul-claro:      #8cd6ec;
+$color-azul-marinho:    #111831;
+$color-azul-marinho-5:  #676D85;
 
 $color-primary:         #4680ff;
 $color-warning:         #FFB64D;
@@ -18,14 +24,82 @@ $color-dark:            #2b3d51;
 $color-muted:           #919aa3;
 $color-custom:          #64b0f2;
 
+$color-primary-0:       #303548;	// Main Primary color */
+$color-primary-1:       $color-white;
+$color-primary-2:       $color-ice;
+$color-primary-3:       #1F253E;
+$color-primary-4:       #111831;
+
+$color-secundary-0:     #FFF9F8;	// Main secundary color */
+$color-secundary-1:     #FFE1DD;
+$color-secundary-2:     #FFC5BC;
+$color-secundary-3:     #FFA799;
+$color-secundary-4:     #F48270;
+
+$color-terciary-0:      #FCF7FE;	// Main terciary color */
+$color-terciary-1:      #ECD4F3;
+$color-terciary-2:      #D2A7DF;
+$color-terciary-3:      #B178C3;
+$color-terciary-4:      #8D4DA1;
+
 $color-primaria: $color-cinza-dark;
 //$color-secundaria;
 //$color-terciaria;
 
-$color-cabecalho-lateral: $color-primaria;
-$color-cabecalho-topo:    $color-primaria;
-$color-cabecalho-tabela:  $color-primaria;
+// $color-cabecalho-lateral: $color-primaria;
+// $color-cabecalho-topo:    $color-primaria;
+// $color-cabecalho-tabela:  $color-primaria;
 
-$color-fundo-card-cabecalho: $color-cinza-claro;
-$color-fundo-card-footer: $color-cinza-claro;
-$color-hover-tabela: $color-azul-claro;
+ $color-fundo-card-cabecalho: $color-cinza-claro;
+ $color-fundo-card-footer: $color-cinza-claro;
+// $color-hover-tabela: $color-azul-claro;
+// $color-datatable-zebrado: $color-cinza-5;
+ $color-fundo-container: $color-ice;
+// $color-fundo-card-footer: $color-cinza-claro;
+
+$color-cabecalho-lateral: var(--color-primary-0);
+$color-cabecalho-topo:    var(--color-primary-0);
+$color-cabecalho-tabela:  var(--color-primary-4);
+
+
+//$color-fundo-card-cabecalho: var(--color-primary-1);
+//$color-fundo-card-footer: var(--color-primary-1);
+$color-hover-tabela: var(--color-primary-3);
+$color-hover-tabela-texto: var(--color-primary-1);
+$color-datatable-zebrado: $color-cinza-5;
+$color-fundo-container: var(--color-primary-2);
+
+@function isColorDark($color ) {
+    // Parse RGB by isolating each color
+    $red: red($color );
+    $green: green($color );
+    $blue: blue($color );
+    // Compute the perceptive luminance, keeping
+    // in mind that the human eye favors green.
+    $l: 1 - (0.299 * $red + 0.587 * $green + 0.114 * $blue ) / 255;
+
+    /* arguably this should be 0.50, but testing out various colors, this seemed to be the best so far. */
+    @if ($l < 0.41) {
+        // if the luminance is less than 0.5 return black
+        @return #000000;
+    }
+
+    // if the luminance is more than 0.5 return white
+    @return #ffffff;
+
+}
+
+@function contrastText($color) {   
+    $result: invert(map.get($colors, 'color-primary-3'));   
+    $lightness: lightness($result);
+   
+    @if ($lightness < 50) {
+        @return $color-black;
+    }
+
+    @return $color-white;
+}
+
+@mixin colorContrast($color){   
+    color: contrastText($color);
+  }

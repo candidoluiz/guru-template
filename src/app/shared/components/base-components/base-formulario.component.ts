@@ -8,10 +8,9 @@ import { EntidadeBase } from "../../models/base-resource.model";
 import { BaseResourceService } from "../../service/base-resource.service";
 
 
-
 @Directive()
-export abstract class BaseFormularioComponent<T extends EntidadeBase> implements OnInit, AfterContentChecked{
-  
+export abstract class BaseFormularioComponent<T extends EntidadeBase> implements OnInit, AfterContentChecked {
+
     currentAction: string;
     formulario: FormGroup;
     pageTitle: string;
@@ -23,13 +22,13 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
 
     protected route: ActivatedRoute;
     protected router: Router;
-    protected formBuilder: FormBuilder;    
+    protected formBuilder: FormBuilder;
 
     constructor(
         protected injector: Injector,
         public resource: T,
         protected resourceService: BaseResourceService<T>,
-        protected jsonDataToResourceFn: (jsonData) => T,      
+        protected jsonDataToResourceFn: (jsonData) => T,
     ) {
         this.route = this.injector.get(ActivatedRoute);
         this.router = this.injector.get(Router);
@@ -63,9 +62,9 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
         this.spinnerService.show();
         this.resourceService.delete(this.resource.id).subscribe(ret => {
             this.spinnerService.hide();
-            this.msgService.showMensagemSucessoTempoRetorno('', 'Excluído com sucesso.').then((res) => {                
+            this.msgService.showMensagemSucessoTempoRetorno('', 'Excluído com sucesso.').then((res) => {
                 const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
-                this.router.navigate([baseComponentPath]);                  
+                this.router.navigate([baseComponentPath]);
             });
         }, erro => {
             this.spinnerService.hide()
@@ -141,11 +140,11 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
             )
     }
 
-  
+
     protected actionsForSuccess(resource: T) {
         this.spinnerService.hide();
         //setTimeout(() => {
-            this.msgService.showMensagemSucessoTempo('', 'REGISTRO SALVO COM SUCESSO!');
+        this.msgService.showMensagemSucessoTempo('', 'REGISTRO SALVO COM SUCESSO!');
 
         //}, 1000);
 
@@ -153,10 +152,10 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
         const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
 
         // redirect/reload component page
-        if(this.voltar){
+        if (this.voltar) {
             setTimeout(() => {
-                this.router.navigate([baseComponentPath])                
-            },1200);
+                this.router.navigate([baseComponentPath])
+            }, 1200);
             return
         }
         this.router.navigateByUrl(baseComponentPath, { skipLocationChange: true }).then(
@@ -165,7 +164,7 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
     }
 
 
-    protected actionsForError(error) {        
+    protected actionsForError(error) {
         this.spinnerService.hide();
 
         this.submittingForm = false;

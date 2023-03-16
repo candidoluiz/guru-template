@@ -53,25 +53,25 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
         this.router.navigate([event.data.id, "edit"], { relativeTo: this.route })
     }
 
-    onPesquisar() {    
-        this.onMudarPagina({first:0, rows:this.qntRegistro})
+    onPesquisar() {
+        this.onMudarPagina({ first: 0, rows: this.qntRegistro })
     }
 
-    onMudarPagina(val){
+    onMudarPagina(val) {
         this.paginacao(val);
         this.buscarRegistros();
     }
 
-    private paginacao(val){
-        this.formulario.addControl('page',new FormControl(''))
-        this.formulario.addControl('size',new FormControl(''))
-        
+    private paginacao(val) {
+        this.formulario.addControl('page', new FormControl(''))
+        this.formulario.addControl('size', new FormControl(''))
+
         this.formulario.get("page").setValue(this.paginaSelecionada(val.rows, val.first));
         this.formulario.get("size").setValue(val.rows);
-    }  
+    }
 
-    private paginaSelecionada(quantidade, pagina){
-        return pagina/quantidade
+    private paginaSelecionada(quantidade, pagina) {
+        return pagina / quantidade
     }
 
     buscarRegistros() {
@@ -93,5 +93,5 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
 
     protected erroBusca(erro) {
         this.msgService.showMensagemErro('', erro);
-    }  
+    }
 }

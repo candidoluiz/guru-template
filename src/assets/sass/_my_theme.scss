@@ -1,0 +1,26 @@
+$colors:(
+"color-primary-0": $color-primary-0,
+"color-primary-1": $color-primary-1,
+"color-primary-2": $color-primary-2,
+"color-primary-3": $color-primary-3,
+"color-primary-4": $color-primary-4,
+
+"color-secundary-0": $color-secundary-0,
+"color-secundary-1": $color-secundary-1,
+"color-secundary-2": $color-secundary-2,
+"color-secundary-3": $color-secundary-3,
+"color-secundary-4": $color-secundary-4,
+
+"color-terciary-0": $color-terciary-0,
+"color-terciary-1": $color-terciary-1,
+"color-terciary-2": $color-terciary-2,
+"color-terciary-3": $color-terciary-3,
+"color-terciary-4": $color-terciary-4,
+
+);
+
+:root{
+    @each $cor, $value in $colors{
+        --#{$cor}: #{$value};
+    }
+}
