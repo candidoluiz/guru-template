@@ -169,10 +169,13 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
 
         this.submittingForm = false;
 
-        if (error.status === 422)
+        if (error.status === 422){
             this.serverErrorMessages = JSON.parse(error._body).errors;
-        else
+        }
+        else{
             this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."]
+            this.msgService.showMensagemErro('',this.serverErrorMessages[0])
+        }
     }
 
 

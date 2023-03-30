@@ -92,6 +92,10 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     }
 
     protected erroBusca(erro) {
+        if(erro.status === 0){
+            this.msgService.showMensagemErro('', 'Falha na comunicação com o servidor. Por favor, tente mais tarde.');
+            return;
+        }
         this.msgService.showMensagemErro('', erro);
     }
 }
