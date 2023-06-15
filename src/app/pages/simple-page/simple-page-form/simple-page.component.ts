@@ -1,7 +1,8 @@
-import { Component, Injector } from "@angular/core";
+import { Component, Injector, OnInit } from "@angular/core";
 import { BaseFormularioComponent } from "../../../shared/components/base-components/base-formulario.component";
 import { ExemploService } from "../service/exemplo.service";
 import { Exemplo } from "../model/exemplo";
+import { DataTableBuilder } from "src/app/shared/builder/datatable-builder/datatable-builder";
 
 @Component({
     selector: 'app-simple-page',
@@ -15,6 +16,15 @@ export class SimplePageComponent extends BaseFormularioComponent<Exemplo> {
         super(injector, new Exemplo(), exemploService, Exemplo.fromJson);
     }
 
+     override iniciar(){
+        setTimeout(()=>{
+            this.montarColunas();
+            
+        })
+    }
+
+    datatable;
+
     protected buildResourceForm(): void {
         this.formulario = Exemplo.montarFormulario(new Exemplo());
     }
@@ -26,6 +36,16 @@ export class SimplePageComponent extends BaseFormularioComponent<Exemplo> {
     protected override editionPageTitle(): string {
         const categoryName = this.resource.nome || "";
         return "Editando Exemplo: " + categoryName;
+    }
+
+    montarColunas() {
+        this.datatable = DataTableBuilder
+        .builder()
+            .criarColunasSimples('Código', 'id', 1)
+            .criarColunasSimples('Nome', 'nome')
+            .criarColunasSimples('Observação', 'observacao')
+        .construir();
+
     }
 
 }

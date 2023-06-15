@@ -15,14 +15,39 @@ const INPUT_FIELD_VALUE_ACCESSOR: any = {
 })
 export class CustomInputComponent implements ControlValueAccessor {
 
+    /**
+     * Classe a ser definida
+     */
     @Input() classeCss;
+    /**
+     * Id do componente
+     */
     @Input() id: string;
+    /**
+     * Nome que será exibido
+     */
     @Input() label: string;
+    /**
+     * Tipo do componente
+     */
     @Input() type = 'text';
+    /**
+     * Utilizado para pegar o valor do componente
+     */
     @Input() control;
+    /**
+     * Indica se será um componete apenas leitura
+     */
     @Input() isReadOnly = false;
+    /**
+     * Caso o Input for um text-area, esse será o default da quantiade
+     * de linhas
+     */
     @Input() rows = 5;
 
+    /**
+     * Evento que será emitido ao sair do componente
+     */
     @Output() eventoBlur = new EventEmitter()
 
     onChangeCb: (_: any) => void = () => { };

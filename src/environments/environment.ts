@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://192.168.0.110:8080/'
+  BASE_URL: 'http://192.168.56.1:8080/'
 };

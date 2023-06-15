@@ -6,6 +6,10 @@ export class DataTableBuilder{
     datatable: DataTable = new  DataTable;
     colunas: Coluna[] =[];
 
+    /**
+     * Método inicial da contrução das colunas
+     * @returns 
+     */
     static builder(){
         return new DataTableBuilder();
     }
@@ -38,6 +42,13 @@ export class DataTableBuilder{
         return this;
     }
 
+    /**
+     * Criação da coluna simples onde terá seu alinhamento ao centro
+     * @param titulo Titulo da coluna
+     * @param propriedade Propriedade que virá da api
+     * @param tamanho tamanho passado em numerico para ser exibido em % na coluna default 5%
+     * @returns 
+     */
     criarColunasSimples(titulo: string, propriedade: string, tamanho: number = 5): DataTableBuilder{
         this.colunas.push(
             ColunaBuilder.builder()
@@ -51,6 +62,13 @@ export class DataTableBuilder{
 
     }
 
+    /**
+     * Criação da coluna simples onde terá seu alinhamento a esquerda
+     * @param titulo Titulo da coluna
+     * @param propriedade Propriedade que virá da api
+     * @param tamanho tamanho passado em numerico para ser exibido em % na coluna default 10%
+     * @returns 
+     */
     criarColunasTexto(titulo: string, propriedade: string, tamanho: number = 10): DataTableBuilder{
         this.colunas.push(
             ColunaBuilder.builder()
@@ -64,11 +82,20 @@ export class DataTableBuilder{
 
     }
 
+    /**
+     * Adiciona uma coluna persolnalizada
+     * @param coluna Coluna
+     * @returns 
+     */
     adicionarColuna(coluna: Coluna): DataTableBuilder{
         this.colunas.push(coluna);
         return this;
     }
 
+    /**
+     * Finaliza a construção das colunas
+     * @returns 
+     */
     construir(): DataTable{
         this.datatable.colunas = this.colunas;
         this.datatable.gerarColunasExibidas();

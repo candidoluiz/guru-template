@@ -7,16 +7,37 @@
     [modoEdicao]="currentAction"
 >
     <div formulario [formGroup]="formulario">
-        <div class="row">
-            <div class="col-md-2">             
-                <app-custom-input label="Código" formControlName="id" [control]="formulario.get('id')"></app-custom-input>
-            </div>         
-            <div class="col-md-10">
-                <app-custom-input label="Nome" formControlName="nome" [control]="formulario.get('nome')"></app-custom-input>
-            </div>
-            <div class="col-md-12">               
-                <app-custom-input label="Observação" formControlName="observacao" [control]="formulario.get('observacao')"></app-custom-input>
-            </div>
-        </div>
+        <mat-tab-group dynamicHeight>
+            <mat-tab label="Dados Principais">
+                <div class="col-md-12">
+                    <div class="row mt-2">
+                        <div class="col-md-2">             
+                            <app-custom-input label="Código" formControlName="id" [control]="formulario.get('id')"></app-custom-input>
+                        </div>         
+                        <div class="col-md-10">
+                            <app-custom-input label="Nome" formControlName="nome" [control]="formulario.get('nome')"></app-custom-input>
+                        </div>
+                        <div class="col-md-12">               
+                            <app-custom-input label="Observação" formControlName="observacao" [control]="formulario.get('observacao')"></app-custom-input>
+                        </div>
+                    </div>
+                </div>               
+            </mat-tab>
+
+            <mat-tab label="SECOND">
+                <app-template-modal-datatable
+                    [datatable]="datatable"
+                ></app-template-modal-datatable>
+            </mat-tab>
+
+        </mat-tab-group>
+        
+      
     </div>
 </app-template-formulario>
+
+ <!-- <mat-tab-group>
+        <mat-tab label="FIRST"> CONTENT 1 </mat-tab>
+        <mat-tab label="SECOND"> CONTENT 2 </mat-tab>
+        <mat-tab label="THIRD"> CONTENT 3 </mat-tab>
+    </mat-tab-group> -->

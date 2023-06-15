@@ -1,0 +1,69 @@
+<div class="row" autocomplete="off">
+    <div class="col-sm-12">
+        <app-card [title]="tituloCard" [semRodape]="true" [cardClass]="semSombra" [tituloAlinhado]="true">
+            <div class="content">
+                <ng-content select="[filtro]"></ng-content>
+            </div>             
+                <div class="col-md-12" style="text-align: end; padding-right: 0px;">
+                    <button type="button" class="btn btn-success mr-1"><i class="icofont icofont-plus" (click)="onAbrirModal()"></i>NOVO</button>
+                </div>
+                <div class="col-md-12" *ngIf="datatable">
+                    <div class="row mt-3">
+
+                        <p-table 
+                            style="min-width: 100%;"
+                            responsiveLayout="scroll"
+                            [value]="itens"
+                            styleClass="p-datatable-sm p-datatable-striped"                           
+                        >
+                        <ng-template pTemplate="header">
+                            <tr>                               
+                                <th style="text-align: center; width: 1%;">Ações</th>
+                                <ng-container *ngFor="let coluna of colunas">
+                                    <th [ngStyle]="onDefinirEstilo(coluna)">{{coluna?.titulo}}</th>
+                                </ng-container>
+                            </tr>
+                        </ng-template>
+
+                        <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+                            <tr>
+                                <td style="text-align: center; font-size: 1.2rem;">
+                                    <span *ngIf="!iconeEditarPersonalizado" class="m-3"><i class="editar icofont icofont-ui-edit"></i></span>
+                                    <ng-container *ngIf="iconeEditarPersonalizado">
+                                        <ng-template *ngTemplateOutlet="iconeEditarPersonalizado, context: {$implicit: product}"></ng-template>
+                                    </ng-container>
+
+                                    <span *ngIf="!iconeExcluirPersonalizado" class="m-3"><i class="excluir icofont icofont-ui-close"></i></span>
+                                    <ng-container *ngIf="iconeExcluirPersonalizado">
+                                        <ng-template *ngTemplateOutlet="iconeExcluirPersonalizado, context: {$implicit: product}"></ng-template>
+                                    </ng-container>
+
+                                    <span *ngIf="!iconeImprimirPersonalizado" class="m-3"><i class="imprimir icofont icofont-print"></i></span>
+                                    <ng-container *ngIf="iconeImprimirPersonalizado">
+                                        <ng-template *ngTemplateOutlet="iconeImprimirPersonalizado, context: {$implicit: product}"></ng-template>
+                                    </ng-container>                                    
+                                                                      
+                                </td>
+                                <ng-container *ngFor="let coluna of colunas">
+                                    <ng-container [ngSwitch]="definirTipoColuna(coluna)">
+                                        <ng-container *ngSwitchCase="'DATA'">
+                                            <td [ngStyle]="onDefinirEstilo(coluna)"><span>{{product[coluna.propriedade] | date: coluna['tipoExibicao']}}</span></td>
+                                        </ng-container>
+                                        <ng-container *ngSwitchDefault>                                                                       
+                                            <td [ngStyle]="onDefinirEstilo(coluna)"><span>{{product[coluna.propriedade]}}</span></td>
+                                        </ng-container>
+                                    </ng-container>
+                                    
+                                </ng-container>
+                            </tr>
+                        </ng-template>
+
+                        </p-table>
+                       
+                     </div>
+
+                </div>
+            
+        </app-card>
+    </div>
+</div>

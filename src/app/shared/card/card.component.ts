@@ -15,6 +15,7 @@ export class CardComponent implements OnInit {
   @Input() blockClass: string;
   @Input() cardClass: string;
   @Input() classHeader = false;
+  @Input() tituloAlinhado=false
   cardToggle = 'expanded';
   cardClose = 'open';
   fullCard: string;
@@ -25,6 +26,10 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  titleAlign(){
+    return this.tituloAlinhado? 'margin: auto;' : '';
   }
 
   toggleCard(event) {

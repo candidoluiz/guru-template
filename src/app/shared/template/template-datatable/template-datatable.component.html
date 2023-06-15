@@ -29,7 +29,7 @@
             <tr [pSelectableRow]="product" [pSelectableRowIndex]="rowIndex">
                 <ng-container *ngFor="let coluna of colunas">
                     <td [ngStyle]="onDefinirEstilo(coluna)"><span>{{product[coluna.propriedade]}}</span></td>
-                </ng-container>                
+                </ng-container>
             </tr>
         </ng-template>
 

@@ -36,3 +36,5 @@ node_version                    16.13.0
 
 ## Banco em memoria
 npm i angular-in-memory-web-api@0.13.0 --save-dev
+
+## O Tema será definido no app.component.ts

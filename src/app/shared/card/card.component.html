@@ -1,6 +1,11 @@
 <div class="card {{ fullCard }} {{ cardLoad }}" [@cardClose]="cardClose" [ngClass]="cardClass">
   <div class="card-header" *ngIf="title">
-    <h5 style="text-transform: uppercase;">{{ title }}</h5>   
+    <div class="row">
+        <div class="col-md-6" [style]="titleAlign()">
+            <h5 >{{ title }}</h5>
+        </div>
+        <ng-content select="[novo]"></ng-content>        
+    </div>   
   </div>
   <div [@cardToggle]="cardToggle">
     <div class="card-body" [ngClass]="blockClass">

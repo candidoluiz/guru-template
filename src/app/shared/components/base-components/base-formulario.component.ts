@@ -23,6 +23,7 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
     protected route: ActivatedRoute;
     protected router: Router;
     protected formBuilder: FormBuilder;
+    protected iniciar(){}
 
     constructor(
         protected injector: Injector,
@@ -41,6 +42,7 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
         this.setCurrentAction();
         this.buildResourceForm();
         this.loadResource();
+        this.iniciar();
     }
 
     ngAfterContentChecked() {
@@ -93,6 +95,7 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
                         this.spinnerService.hide();
                         this.resource = resource;
                         this.formulario.patchValue(resource) // binds loaded resource data to formulario
+                        this.retornoEdicao();
                     },
                     (error) => {
                         this.spinnerService.hide();
@@ -169,15 +172,22 @@ export abstract class BaseFormularioComponent<T extends EntidadeBase> implements
 
         this.submittingForm = false;
 
-        if (error.status === 422){
+        if (error.status === 422) {
             this.serverErrorMessages = JSON.parse(error._body).errors;
         }
-        else{
+        else {
             this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."]
-            this.msgService.showMensagemErro('',this.serverErrorMessages[0])
+            this.msgService.showMensagemErro('', this.serverErrorMessages[0])
         }
     }
 
 
+    /**
+     * Método responsável pela criação inicial do formulário
+     */
     protected abstract buildResourceForm(): void;
+    /**
+     * Método responsável para criação de lógica no modo de edição
+     */
+    protected retornoEdicao() { };
 }

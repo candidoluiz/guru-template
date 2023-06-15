@@ -19,8 +19,17 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     dataDatable;
     itens: PaginaConsulta<T>;
 
+    /**
+     * Método responsável pela construção dos filtros de pesquisa
+     */
     abstract montarFiltro(): FormGroup;
+     /**
+     * Método inicial da construção do DataTable de pesquisa
+     */
     abstract montarDatatable();
+    /**
+     * Método para informar o título da página
+     */
     abstract titulo(): string;
 
     constructor(
