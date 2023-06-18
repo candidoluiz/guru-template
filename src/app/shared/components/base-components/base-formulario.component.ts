@@ -7,7 +7,6 @@ import { MensagemService } from "../../mensagem/mensagem.service";
 import { EntidadeBase } from "../../models/base-resource.model";
 import { BaseResourceService } from "../../service/base-resource.service";
 
-
 @Directive()
 export abstract class BaseFormularioComponent<T extends EntidadeBase> implements OnInit, AfterContentChecked {
 

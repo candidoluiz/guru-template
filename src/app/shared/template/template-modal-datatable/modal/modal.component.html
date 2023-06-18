@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h4>{{ titulo }}</h4>   
+</div>
+<div class="modal-body">
+    <ng-content select="[conteudo]"></ng-content>
+</div>
+<div class="modal-footer">
+    <div class="col-md-12 text-right" *ngIf="!esconderBotoesPadrao">
+        <button (click)="onSalvar()" type="button" class="btn btn-success mr-3"><i [class]="iconeAdicionar"></i>{{textoAdicionar}}</button>
+        <button (click)="onCancelar()" type="button" class="btn btn-danger"><i [class]="iconeFechar"></i>Fechar</button>       
+    </div>
+    <div class="col-md-12" *ngIf="esconderBotoesPadrao">
+        <ng-content select="[botoes-personalizados]"></ng-content>
+    </div>
+</div>

@@ -16,15 +16,6 @@ export class SimplePageComponent extends BaseFormularioComponent<Exemplo> {
         super(injector, new Exemplo(), exemploService, Exemplo.fromJson);
     }
 
-     override iniciar(){
-        setTimeout(()=>{
-            this.montarColunas();
-            
-        })
-    }
-
-    datatable;
-
     protected buildResourceForm(): void {
         this.formulario = Exemplo.montarFormulario(new Exemplo());
     }
@@ -36,16 +27,6 @@ export class SimplePageComponent extends BaseFormularioComponent<Exemplo> {
     protected override editionPageTitle(): string {
         const categoryName = this.resource.nome || "";
         return "Editando Exemplo: " + categoryName;
-    }
-
-    montarColunas() {
-        this.datatable = DataTableBuilder
-        .builder()
-            .criarColunasSimples('Código', 'id', 1)
-            .criarColunasSimples('Nome', 'nome')
-            .criarColunasSimples('Observação', 'observacao')
-        .construir();
-
     }
 
 }

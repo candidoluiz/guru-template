@@ -1,0 +1,29 @@
+<app-template-modal-datatable 
+    [datatable]="datatable" 
+    [modalReferencia]="modal"
+    (onEditarItem)="onEditar($event)"
+></app-template-modal-datatable>
+
+<ng-template #modal let-modal>
+    <app-modal
+        [titulo]="titulo()"
+        (onEventoCancelar)="modal.close()"
+    >
+        <div conteudo class="col-md-12">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label for="txtDataInativoItem">Nome</label>
+                    <input id="txtDataInativoItem" name="txtDataInativoItem" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="txtDataInativoItem1">Nome</label>
+                    <input id="txtDataInativoItem1" name="txtDataInativoItem" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="txtDataInativoItem2">Nome</label>
+                    <input id="txtDataInativoItem2" name="txtDataInativoItem" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </app-modal>
+</ng-template>

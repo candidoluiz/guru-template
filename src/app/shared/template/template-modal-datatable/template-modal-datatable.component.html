@@ -5,13 +5,13 @@
                 <ng-content select="[filtro]"></ng-content>
             </div>             
                 <div class="col-md-12" style="text-align: end; padding-right: 0px;">
-                    <button type="button" class="btn btn-success mr-1"><i class="icofont icofont-plus" (click)="onAbrirModal()"></i>NOVO</button>
+                    <button (click)="onAbrirModal()" type="button" class="btn btn-success mr-1"><i class="icofont icofont-plus"></i>NOVO</button>
                 </div>
                 <div class="col-md-12" *ngIf="datatable">
                     <div class="row mt-3">
 
-                        <p-table 
-                            style="min-width: 100%;"
+                        <p-table
+                            class="largura-maxima"                   
                             responsiveLayout="scroll"
                             [value]="itens"
                             styleClass="p-datatable-sm p-datatable-striped"                           
@@ -28,7 +28,7 @@
                         <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
                             <tr>
                                 <td style="text-align: center; font-size: 1.2rem;">
-                                    <span *ngIf="!iconeEditarPersonalizado" class="m-3"><i class="editar icofont icofont-ui-edit"></i></span>
+                                    <span (click)="onEditar(product)" *ngIf="!iconeEditarPersonalizado" class="m-3"><i class="editar icofont icofont-ui-edit"></i></span>
                                     <ng-container *ngIf="iconeEditarPersonalizado">
                                         <ng-template *ngTemplateOutlet="iconeEditarPersonalizado, context: {$implicit: product}"></ng-template>
                                     </ng-container>

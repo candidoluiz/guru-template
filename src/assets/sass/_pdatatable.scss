@@ -1,49 +1,53 @@
-.p-datatable.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) {
+.p-datatable.p-datatable-striped .p-datatable-tbody>tr:nth-child(even) {
     background: $color-datatable-zebrado;
 }
 
-.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight) {
+.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody>tr:not(.p-highlight) {
     transition: 0.3s;
-  }
+}
 
-.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
+.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody>tr:not(.p-highlight):hover {
     background: $color-hover-tabela;
-    color: $color-hover-tabela-texto;    
+    color: $color-hover-tabela-texto;
     cursor: pointer;
-    
-  }
 
-  .p-datatable.p-datatable-sm .p-datatable-tbody > tr > td {
+}
+
+.largura-maxima {
+    width: 100%;
+}
+
+.p-datatable.p-datatable-sm .p-datatable-tbody>tr>td {
     padding: 0.1rem 0.1rem;
 }
 
-  .p-datatable{
+.p-datatable {
     box-shadow: 0 4px 11px 0 rgb(0 0 0 / 46%);
-  }
+}
 
-  td .editar{
+td .editar {
     color: $color-warning !important;
     cursor: pointer;
-  }
+}
 
-  td .imprimir{
+td .imprimir {
     color: $color-success !important;
     cursor: pointer;
-  }
+}
 
-  td .excluir{
+td .excluir {
     color: $color-danger !important;
     cursor: pointer;
-  }
+}
 
-  th{
+th {
     text-transform: Uppercase;
     font-weight: 500 !important;
     font-size: 13px;
     white-space: nowrap;
 }
 
-.p-datatable .p-datatable-thead > tr > th { 
+.p-datatable .p-datatable-thead>tr>th {
     color: #ffffff;
-    background: $color-cabecalho-tabela;   
+    background: $color-cabecalho-tabela;
 }

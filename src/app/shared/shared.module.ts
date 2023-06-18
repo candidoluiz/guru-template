@@ -19,6 +19,7 @@ import { TemplateDatatableComponent } from './template/template-datatable/templa
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { ErrorMsgComponent } from './components/validacao/error-msg/error-msg.component';
 import { TemplateModalDatatableComponent } from './template/template-modal-datatable/template-modal-datatable.component';
+import { ModalComponent } from './template/template-modal-datatable/modal/modal.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -49,7 +50,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         TemplateDatatableComponent,
         CustomInputComponent,
         ErrorMsgComponent,
-        TemplateModalDatatableComponent
+        TemplateModalDatatableComponent,
+        ModalComponent
     ],
     exports: [
         AccordionAnchorDirective,
@@ -71,7 +73,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         PrimengModule,
         TemplateDatatableComponent,
         CustomInputComponent,
-        TemplateModalDatatableComponent
+        TemplateModalDatatableComponent,
+        ModalComponent
 
         // ClickOutsideModule
     ],

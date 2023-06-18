@@ -79,6 +79,14 @@ export class TemplateModalDatatableComponent implements OnInit {
 
     }
 
+    onEditar(element){
+        this.onEditarItem.emit(element);
+    }
+
+    onExcluir(element){
+        this.onExcluirItem.emit(element);
+    }
+
     onAbrirModal(){
         let modal = this.modalService.open(this.modalReferencia, { ariaLabelledBy: 'modal-basic-title', size: this.tamanhoModal, keyboard: false, backdrop: 'static' });
         this.onEventoAbrirModal.emit(modal);
