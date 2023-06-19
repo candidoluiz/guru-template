@@ -20,6 +20,8 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
 import { ErrorMsgComponent } from './components/validacao/error-msg/error-msg.component';
 import { TemplateModalDatatableComponent } from './template/template-modal-datatable/template-modal-datatable.component';
 import { ModalComponent } from './template/template-modal-datatable/modal/modal.component';
+import { ConsultaSelectComponent } from './components/consulta-select/consulta-select.component';
+import { UppercaseDirective } from './diretivas/uppercase.directive';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
@@ -51,7 +53,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         CustomInputComponent,
         ErrorMsgComponent,
         TemplateModalDatatableComponent,
-        ModalComponent
+        ModalComponent,
+        ConsultaSelectComponent,
+        UppercaseDirective
     ],
     exports: [
         AccordionAnchorDirective,
@@ -74,7 +78,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         TemplateDatatableComponent,
         CustomInputComponent,
         TemplateModalDatatableComponent,
-        ModalComponent
+        ModalComponent,
+        ConsultaSelectComponent,
+        UppercaseDirective
 
         // ClickOutsideModule
     ],

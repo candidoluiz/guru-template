@@ -47,12 +47,7 @@ export class TemplateModalDatatableComponent implements OnInit {
     @Input() iconeEditarPersonalizado: TemplateRef<any>;
     @Input() iconeExcluirPersonalizado: TemplateRef<any>;
     @Input() iconeImprimirPersonalizado: TemplateRef<any>;
-    @Input() itens: any[] = [
-        {id: '1', nome:'teste',observacao: 'fff'},
-        {id: '2', nome:'teste',observacao: 'fff'},
-        {id: '3', nome:'teste',observacao: 'fff'},
-        {id: '4', nome:'teste',observacao: 'fff'},
-    ];
+    @Input() itensArray: FormArray;
 
     @Output() onEditarItem = new EventEmitter();
     @Output() onVisualizarItem = new EventEmitter();
@@ -75,12 +70,17 @@ export class TemplateModalDatatableComponent implements OnInit {
         }
     }
 
+    get itens(){
+        return this.itensArray?.value
+    }
+
     definirTipoColuna(coluna){
 
     }
 
-    onEditar(element){
-        this.onEditarItem.emit(element);
+    onEditar(index){
+        let modal = this.modalService.open(this.modalReferencia, { ariaLabelledBy: 'modal-basic-title', size: this.tamanhoModal, keyboard: false, backdrop: 'static' });
+        this.onEditarItem.emit({modal: modal, index: index});       
     }
 
     onExcluir(element){

@@ -14,8 +14,17 @@
                         <div class="col-md-2">             
                             <app-custom-input label="Código" formControlName="id" [control]="formulario.get('id')"></app-custom-input>
                         </div>         
-                        <div class="col-md-10">
+                        <div class="col-md-6">
                             <app-custom-input label="Nome" formControlName="nome" [control]="formulario.get('nome')"></app-custom-input>
+                        </div>
+                        <div class="col-md-4">
+                            <app-consulta-select
+                            [formulario]="formulario"
+                            [consultaSelect]="consultaSelectEncaminhamentoFiltro"
+                            nomeApresentacao="Encaminhamento"
+                            nomeCampo="nome"
+                            bindLabel="nome"
+                        ></app-consulta-select>
                         </div>
                         <div class="col-md-12">               
                             <app-custom-input label="Observação" formControlName="observacao" [control]="formulario.get('observacao')"></app-custom-input>
@@ -25,7 +34,7 @@
             </mat-tab>
 
             <mat-tab label="SECOND">
-                <app-exemplo-modal></app-exemplo-modal>
+                <app-exemplo-modal [arrayItens]="itens"></app-exemplo-modal>
             </mat-tab>
 
         </mat-tab-group>              

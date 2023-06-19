@@ -1,0 +1,24 @@
+<div  [formGroup]="formulario" [class]="aplicaCssErro()">
+    <label *ngIf="nomeApresentacao">{{ nomeApresentacao }}</label>
+    <ng-select  #consultaNgSelect
+                [placeholder]="placeholder"
+                [loading]="consultaSelect.isLoading()"
+                [loadingText]="loadingText"
+                [notFoundText]="notFoundText"
+                [bindLabel]="bindLabel"
+                [bindValue]="bindValue"
+                (change)="change($event)"
+                (blur)="blur($event)"
+                (open)="open($event)"
+                [items]="consultaSelect.resultado()"
+                (search)="consultaSelect.consultar($event)"
+                [searchFn]="consultaSelect.searchFn()"
+                style="overflow: visible;"
+                [appendTo]="appendTo"
+                formControlName="{{nomeCampo}}"
+                [clearable]="podeLimpar"
+                
+                >
+    </ng-select>
+    <app-error-msg [control]="formularioControl" [label]="nomeApresentacao"></app-error-msg>
+</div>

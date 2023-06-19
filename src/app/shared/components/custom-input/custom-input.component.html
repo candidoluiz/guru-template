@@ -3,7 +3,7 @@
 <ng-container *ngIf="type == 'text'">
     <div class="form-group" [ngClass]="aplicaCssErro()">
         <label [attr.for]="idName()" class="control-label">{{ label }}</label>
-        <input class="form-control" 
+        <input class="form-control" salUppercase
             [type]="type"        
             [id]="idName()" 
             [disabled]="!!isReadOnly" 

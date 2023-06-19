@@ -7,6 +7,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import { environment } from 'src/environments/environment';
+import { DataTable } from '../builder/model/datatable';
 
 
 export abstract class BaseResourceService<T extends EntidadeBase> {
@@ -49,6 +50,32 @@ export abstract class BaseResourceService<T extends EntidadeBase> {
             }),
             catchError(this.handleError)
         )
+    }
+
+    consultaPadrao(parametros: any, caminho: string = 'pesquisar') {
+
+        if ( !(parametros instanceof HttpParams) ) {
+            parametros = this.removeParametrosNull(parametros);
+        }
+
+        return this.http.get<any[]>(`${ this.apiPath }/${ caminho }`, { params: parametros })
+            .pipe(
+                map(res => {
+                    const data = JSON.parse(JSON.stringify(res));
+                    const datatable = {
+                        dados: [],
+                        totalResultados: 0,
+                        numeroPagina: 0,
+                        tamanhoPagina: 0
+                      };
+                    datatable.dados = data.content;
+                    datatable.totalResultados = data.totalElements;
+                    datatable.numeroPagina = data.number;
+                    datatable.tamanhoPagina = data.size;
+                    return datatable;
+                }),
+                catchError(this.handleError)
+            );
     }
 
     getById(id: number): Observable<T> {

@@ -2,13 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { DataTableBuilder } from 'src/app/shared/builder/datatable-builder/datatable-builder';
 import { BaseModalComponent } from 'src/app/shared/components/base-components/base-modal.component';
+import { Exemplo } from '../../model/exemplo';
+import { Item } from '../../model/itens';
 
 @Component({
     selector: 'app-exemplo-modal',
     templateUrl: './exemplo-modal.component.html',
     styleUrls: ['./exemplo-modal.component.scss']
 })
-export class ExemploModalComponent extends BaseModalComponent<any> implements OnInit {
+export class ExemploModalComponent extends BaseModalComponent<Item> implements OnInit {   
 
     @Input() arrayItens: FormArray
 
@@ -18,15 +20,34 @@ export class ExemploModalComponent extends BaseModalComponent<any> implements On
 
     override montarDatatable() {
         return DataTableBuilder
-            .builder()
-            .criarColunasSimples('Código', 'id', 1)
+            .builder()            
             .criarColunasSimples('Nome', 'nome')
             .criarColunasSimples('Observação', 'observacao')
             .construir();
     }
 
+    override getItens(): FormArray {
+        return this.arrayItens;
+    }
+
+    override montarFormulario(dados: any) {
+        return Item.montarFormulario(dados)
+    }
+
     override editar() {
-        this.arrayItens
+        this.formulario = this.montarFormulario(this.arrayItens.value[this.index])
+    }
+
+    override salvar() {
+        if(this.edicao){
+            this.onSalvarEdicao();
+        }else{
+            this.onSalvarNovo();
+        }
+    }
+
+    override abrirModal() {
+        this.formulario = this.montarFormulario(new Item());
     }
 
 }

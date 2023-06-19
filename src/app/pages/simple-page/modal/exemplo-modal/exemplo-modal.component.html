@@ -1,19 +1,24 @@
 <app-template-modal-datatable 
-    [datatable]="datatable" 
+    [datatable]="datatable"
+    [itensArray]="arrayItens"
     [modalReferencia]="modal"
     (onEditarItem)="onEditar($event)"
+    (onEventoAbrirModal)="onAbrirModal($event)"
+    (onExcluirItem)="onExcluir($event)"
+    tamanhoModal="lg"
 ></app-template-modal-datatable>
 
 <ng-template #modal let-modal>
     <app-modal
         [titulo]="titulo()"
         (onEventoCancelar)="modal.close()"
+        (onEventoSalvar)="onSalvar()"
     >
-        <div conteudo class="col-md-12">
+        <div conteudo class="col-md-12" [formGroup]="formulario">
             <div class="row">
                 <div class="col-md-4 form-group">
                     <label for="txtDataInativoItem">Nome</label>
-                    <input id="txtDataInativoItem" name="txtDataInativoItem" type="text" class="form-control">
+                    <input id="txtDataInativoItem" name="txtDataInativoItem" type="text" class="form-control" formControlName="nome">
                 </div>
                 <div class="col-md-4 form-group">
                     <label for="txtDataInativoItem1">Nome</label>

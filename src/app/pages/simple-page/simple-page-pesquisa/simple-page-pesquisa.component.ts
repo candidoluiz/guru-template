@@ -20,7 +20,7 @@ export class SimplePagePesquisaComponent extends BaseConsultaComponent<Exemplo> 
         return DataTableBuilder
             .builder()
             .criarColunasSimples('Código', 'id', 1)
-            .criarColunasSimples('Nome', 'nome')
+            .criarColunasTexto('Nome', 'nome')
             .criarColunasSimples('Observação', 'observacao')
             .construir();
     }

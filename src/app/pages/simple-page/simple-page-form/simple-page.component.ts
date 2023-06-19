@@ -1,14 +1,17 @@
-import { Component, Injector, OnInit } from "@angular/core";
+import { ConsultaSelectPersonalizado } from './../../../shared/components/consulta-select/consulta-select-personalizado';
+import { Component, Injector } from "@angular/core";
 import { BaseFormularioComponent } from "../../../shared/components/base-components/base-formulario.component";
 import { ExemploService } from "../service/exemplo.service";
 import { Exemplo } from "../model/exemplo";
-import { DataTableBuilder } from "src/app/shared/builder/datatable-builder/datatable-builder";
+import { FormArray } from "@angular/forms";
 
 @Component({
     selector: 'app-simple-page',
     templateUrl: './simple-page.component.html'
 })
 export class SimplePageComponent extends BaseFormularioComponent<Exemplo> {
+    
+    consultaSelectEncaminhamentoFiltro = new ConsultaSelectPersonalizado(this.exemploService);
 
     constructor(
         protected exemploService: ExemploService,
@@ -27,6 +30,10 @@ export class SimplePageComponent extends BaseFormularioComponent<Exemplo> {
     protected override editionPageTitle(): string {
         const categoryName = this.resource.nome || "";
         return "Editando Exemplo: " + categoryName;
+    }
+
+    get itens(): FormArray{
+        return this.formulario.get('itens') as FormArray
     }
 
 }
