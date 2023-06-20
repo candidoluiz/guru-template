@@ -9,7 +9,7 @@ import { authConfig } from './auth.config';
 })
 export class AuthService {
 
-    public authenticationEventObservable: Subject<boolean> = new Subject<boolean>();
+    public authenticationEventObservable: Subject<boolean> = new Subject<boolean>();   
 
     constructor(private router: Router, private oauthService: OAuthService) {
         this.oauthService.configure(authConfig);
@@ -17,7 +17,7 @@ export class AuthService {
 
     public login() {
         this.oauthService.loadDiscoveryDocumentAndLogin().then((result: boolean)=>{
-            this.authenticationEventObservable.next(result);
+            this.authenticationEventObservable.next(result);           
         }).catch(error=>{
             this.logout();
         });
@@ -33,5 +33,13 @@ export class AuthService {
             return true;
         }
         return false;
+    }
+
+    get claims(): any{
+        return this.oauthService.getIdentityClaims();
+    }
+
+    get nome(){
+        return this.claims?.given_name
     }
 }

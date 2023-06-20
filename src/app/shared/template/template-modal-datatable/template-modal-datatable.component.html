@@ -28,27 +28,53 @@
                         <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
                             <tr>
                                 <td style="text-align: center; font-size: 1.2rem;">
-                                    <span (click)="onEditar(rowIndex)" *ngIf="!iconeEditarPersonalizado" class="m-3"><i class="editar icofont icofont-ui-edit"></i></span>
-                                    <ng-container *ngIf="iconeEditarPersonalizado">
-                                        <ng-template *ngTemplateOutlet="iconeEditarPersonalizado, context: {$implicit: product}"></ng-template>
+
+                                    <ng-container *ngIf="podeEditar">
+                                        <span (click)="onEditar(rowIndex)" *ngIf="!iconeEditarPersonalizado" class="m-3"><i class="editar icofont icofont-ui-edit"></i></span>
+                                        <ng-container *ngIf="iconeEditarPersonalizado">
+                                            <ng-template *ngTemplateOutlet="iconeEditarPersonalizado, context: {$implicit: product}"></ng-template>
+                                        </ng-container>
                                     </ng-container>
 
-                                    <span (click)="onExcluir(rowIndex)" *ngIf="!iconeExcluirPersonalizado" class="m-3"><i class="excluir icofont icofont-ui-close"></i></span>
-                                    <ng-container *ngIf="iconeExcluirPersonalizado">
-                                        <ng-template *ngTemplateOutlet="iconeExcluirPersonalizado, context: {$implicit: product}"></ng-template>
+                                    <ng-container *ngIf="podeExcluir">
+                                        <span (click)="onExcluir(rowIndex)" *ngIf="!iconeExcluirPersonalizado" class="m-3"><i class="excluir icofont icofont-ui-close"></i></span>
+                                        <ng-container *ngIf="iconeExcluirPersonalizado">
+                                            <ng-template *ngTemplateOutlet="iconeExcluirPersonalizado, context: {$implicit: product}"></ng-template>
+                                        </ng-container>
                                     </ng-container>
 
-                                    <span *ngIf="!iconeImprimirPersonalizado" class="m-3"><i class="imprimir icofont icofont-print"></i></span>
-                                    <ng-container *ngIf="iconeImprimirPersonalizado">
-                                        <ng-template *ngTemplateOutlet="iconeImprimirPersonalizado, context: {$implicit: product}"></ng-template>
-                                    </ng-container>                                    
+                                    <ng-container *ngIf="podeImprimir">
+                                        <span *ngIf="!iconeImprimirPersonalizado" class="m-3"><i class="imprimir icofont icofont-print"></i></span>
+                                        <ng-container *ngIf="iconeImprimirPersonalizado">
+                                            <ng-template *ngTemplateOutlet="iconeImprimirPersonalizado, context: {$implicit: product}"></ng-template>
+                                        </ng-container>
+                                    </ng-container>
                                                                       
                                 </td>
                                 <ng-container *ngFor="let coluna of colunas">
                                     <ng-container [ngSwitch]="definirTipoColuna(coluna)">
+
                                         <ng-container *ngSwitchCase="'DATA'">
                                             <td [ngStyle]="onDefinirEstilo(coluna)"><span>{{product[coluna.propriedade] | date: coluna['tipoExibicao']}}</span></td>
                                         </ng-container>
+
+                                        <ng-container *ngSwitchCase="'PERSONALIZADA'">
+                                            <ng-container *ngIf="coluna.templatePersonalizado">
+                                                <ng-template *ngTemplateOutlet="coluna.templatePersonalizado, context:  { $implicit: product }"  ></ng-template>
+                                            </ng-container>
+                                        </ng-container>
+
+                                        <ng-container *ngSwitchCase="'ALTERAVEL'">                            
+                                            {{ definirValor(coluna,product)}}
+                                        </ng-container>
+
+                                        <ng-container *ngSwitchCase="'ICONE'">
+                                            <a [class]="definirClasseIcone(coluna,product)" [matTooltip]="definirTooltip(coluna,product)">
+                                                <!-- <mat-icon [svgIcon]="definirIcone(coluna,product)"></mat-icon> -->
+                                                <span><i [class]="definirIcone(coluna,product)"></i></span>
+                                            </a>
+                                        </ng-container>
+
                                         <ng-container *ngSwitchDefault>                                                                       
                                             <td [ngStyle]="onDefinirEstilo(coluna)"><span>{{product[coluna.propriedade]}}</span></td>
                                         </ng-container>

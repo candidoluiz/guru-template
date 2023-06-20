@@ -16,7 +16,7 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     protected spinnerService: NgxSpinnerService;
     protected qntRegistro = 5;
     formulario: FormGroup;
-    dataDatable;
+    dataTable;
     itens: PaginaConsulta<T>;
 
     /**
@@ -55,7 +55,7 @@ export abstract class BaseConsultaComponent<T extends EntidadeBase> implements O
     }
 
     montarTabela() {
-        this.dataDatable = this.montarDatatable();
+        this.dataTable = this.montarDatatable();
     }
 
     editar(event) {

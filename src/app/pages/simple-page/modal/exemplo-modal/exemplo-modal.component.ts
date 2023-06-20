@@ -21,8 +21,12 @@ export class ExemploModalComponent extends BaseModalComponent<Item> implements O
     override montarDatatable() {
         return DataTableBuilder
             .builder()            
-            .criarColunasSimples('Nome', 'nome')
-            .criarColunasSimples('Observação', 'observacao')
+                .criarColunasSimples('Nome', 'nome')
+                .criarColunasSimples('Observação', 'observacao')
+                .permitirVisualizar()
+                .permitirEditar()
+                .permitirExcluir()
+                .permitirImprimir()
             .construir();
     }
 

@@ -17,6 +17,10 @@ export class BasicLoginComponent implements OnInit {
 
     login(){
         this.authService.login();
-    }    
+    }
+    
+    get nome(){
+        return this.authService.nome;
+    }
 
 }

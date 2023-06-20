@@ -3,6 +3,11 @@ import { Coluna } from '../../builder/model/coluna';
 import { DataTable } from '../../builder/model/datatable';
 import { FormArray } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ColunaData } from '../../builder/model/coluna-data';
+import { ColunaAlteravel } from '../../builder/model/coluna-alteravel';
+import { ColunaIcone } from '../../builder/model/coluna-icone';
+import { ColunaPersonalizada } from '../../builder/model/coluna-personalizada';
+import { ColunaTituloPersonalizada } from '../../builder/model/coluna-titulo-personalizada';
 
 @Component({
     selector: 'app-template-modal-datatable',
@@ -60,7 +65,10 @@ export class TemplateModalDatatableComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    get colunas(): Coluna[] { return this.datatable.colunas; }
+    get colunas(): any[] { return this.datatable.colunas; }
+    get podeEditar(): boolean { return this.datatable.permiteEditar; }
+    get podeExcluir(): boolean { return this.datatable.permiteExcluir; }
+    get podeImprimir(): boolean { return this.datatable.permiteImprimir; }
 
     onDefinirEstilo(coluna: Coluna) {
         return {
@@ -75,7 +83,45 @@ export class TemplateModalDatatableComponent implements OnInit {
     }
 
     definirTipoColuna(coluna){
+        
+        if( coluna instanceof ColunaIcone) return 'ICONE';
+        else if( coluna instanceof ColunaData) return 'DATA';
+        else if( coluna instanceof ColunaTituloPersonalizada) return 'TITULO-PERSONALIZADA';
+        else if( coluna instanceof ColunaPersonalizada) return 'PERSONALIZADA';
+        else if( coluna instanceof ColunaAlteravel) return 'ALTERAVEL';
+    
+            
+        return null;
+    }
 
+    definirClasseIcone(coluna, element){
+        if(coluna instanceof ColunaIcone  && coluna?.funcaoClasse ){
+            return coluna.funcaoClasse(element);
+        }
+
+        return coluna.classePadrao;
+    }
+
+    definirTooltip(coluna,element){
+        if(coluna instanceof ColunaIcone && coluna?.funcaoTooltip  ){            
+            return coluna.funcaoTooltip(element);
+        }
+
+        return coluna.tooltipPadrao;
+    }
+
+    definirIcone(coluna,element){
+        if(coluna instanceof ColunaIcone && coluna?.funcaoValor  ){            
+            return coluna.funcaoValor(element);
+        }
+
+        return coluna.iconePadrao;
+    }
+
+    definirValor(coluna,element){
+        if(coluna?.funcaoValor)
+            return coluna.funcaoValor(element);
+        return '';
     }
 
     onEditar(index){
